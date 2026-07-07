@@ -1,9 +1,14 @@
+Ho capito perfettamente, ritorniamo al layout simmetrico con l'intestazione tutta centrata che dà quel senso di stabilità, ma mantenendo il logo compatto inserito elegantemente a sinistra della scritta **TorProject**, proprio come un sigillo accademico ufficiale.
+
+Ecco il codice completo e definitivo da copiare e incollare interamente nel tuo file `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TorProject - Protocolli di Contatto</title>
+    <title>TorProject - Ricerca, Frequenze e Coscienza Oggettiva</title>
     <style>
         /* Design Avanzato, Geometrico e Rigoroso */
         :root {
@@ -12,7 +17,7 @@
             --border-color: #223147;
             --accent-color: #58a6ff;
             --accent-dim: #1f4275;
-            --text-main: #dbdec6;
+            --text-main: #dbdec6; /* Un tono di bianco antico/pergamena tecnica, molto serio */
             --text-muted: #8b949e;
         }
 
@@ -25,7 +30,7 @@
             line-height: 1.7;
         }
 
-        /* Header Centrato in Stile Universitario */
+        /* Header Centrato in Stile Universitario / Istituzionale */
         header {
             background-color: var(--panel-color);
             border-bottom: 2px solid var(--border-color);
@@ -33,6 +38,7 @@
             text-align: center;
         }
 
+        /* Gruppo Brand Centrato: Logo + Scritta allineati orizzontalmente */
         .brand-container {
             display: inline-flex;
             align-items: center;
@@ -87,7 +93,6 @@
             color: var(--accent-color);
         }
 
-        /* Layout Contenitore */
         .container {
             max-width: 850px;
             margin: 40px auto;
@@ -96,7 +101,7 @@
 
         .hero {
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
             border-bottom: 1px dashed var(--border-color);
         }
 
@@ -109,16 +114,41 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 18px;
+            font-size: 19px;
             max-width: 700px;
             margin: 0 auto;
         }
 
+        /* Indicatore di stato del laboratorio stile istituzionale */
+        .status-bar {
+            display: inline-flex;
+            align-items: center;
+            background: var(--accent-dim);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 25px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-color);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 8px var(--accent-color);
+        }
+
         .section-title {
-            font-size: 22px;
+            font-size: 24px;
             color: #fff;
-            margin-top: 40px;
-            margin-bottom: 25px;
+            margin-top: 50px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             letter-spacing: 1px;
@@ -128,125 +158,68 @@
             content: "❖";
             color: var(--accent-color);
             margin-right: 12px;
-            font-size: 16px;
+            font-size: 18px;
         }
 
-        /* Layout a due colonne per Informative e Form */
-        .contact-grid {
+        /* Struttura a Griglia per i Moduli di Ricerca */
+        .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1.3fr;
-            }
-        }
-
-        /* Blocco Note Istituzionali */
-        .info-panel {
-            background-color: var(--panel-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 25px;
-            font-size: 14px;
-        }
-
-        .info-panel h3 {
-            color: #fff;
-            margin-top: 0;
-            font-size: 18px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .info-panel ul {
-            padding-left: 20px;
-            color: var(--text-muted);
-        }
-
-        .info-panel ul li {
-            margin-bottom: 12px;
-        }
-
-        .secure-note {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--border-color);
-            color: var(--accent-color);
-            font-family: monospace;
-            font-size: 12px;
-        }
-
-        /* Stile del Modulo di Contatto (Interfaccia Scientifica) */
-        .contact-form {
+        .card {
             background-color: var(--panel-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 30px;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            box-sizing: border-box;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 12px;
-            color: #fff;
-            font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
+        .card:hover {
             border-color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
-        select.form-control {
-            cursor: pointer;
-            color: var(--text-main);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn-submit {
-            background-color: var(--accent-dim);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: bold;
+        .card-meta {
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-            width: 100%;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
 
-        .btn-submit:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
+        .card-meta span {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .card h3 {
+            margin: 0 0 15px 0;
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        /* Glifo decorativo geometrico sullo sfondo della card */
+        .card::after {
+            content: "◎";
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 32px;
+            color: var(--border-color);
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         footer {
@@ -269,18 +242,14 @@
 <body>
 
     <header>
-        <!-- Contenitore Centrale Unificato del Marchio -->
         <div class="brand-container">
             <div class="brand-logo">
                 <svg viewBox="0 0 110 110" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Cerchio Esterno -->
                     <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
 
-                    <!-- Argini del Canale Verticale -->
                     <line x1="50" y1="28" x2="50" y2="82" stroke="#223147" stroke-width="2" />
                     <line x1="60" y1="28" x2="60" y2="82" stroke="#223147" stroke-width="2" />
                     
-                    <!-- Serpentina Fluida dell'Energia -->
                     <path d="M 55,28 
                              C 44,33 66,37 55,42 
                              C 44,47 66,51 55,56 
@@ -288,20 +257,15 @@
                              C 44,75 66,79 55,82" 
                           fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
 
-                    <!-- I Quattro Nodi Radianti -->
-                    <!-- ALTO -->
                     <circle cx="55" cy="23" r="5.5" fill="#ffffff" />
                     <circle cx="55" cy="23" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
 
-                    <!-- BASSO -->
                     <circle cx="55" cy="87" r="5.5" fill="#ffffff" />
                     <circle cx="55" cy="87" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
 
-                    <!-- SINISTRO -->
                     <circle cx="26" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
                     <circle cx="26" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
 
-                    <!-- DESTRO -->
                     <circle cx="84" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
                     <circle cx="84" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
                 </svg>
@@ -312,71 +276,46 @@
         <div class="symbol-separator">━━━━ ❖ ━━━━</div>
         
         <nav>
-            <a href="index.html">❖ Home</a>
+            <a href="index.html" class="active">❖ Home</a>
             <a href="#">⚚ Linee di Ricerca</a>
             <a href="#">🌐 Mappe Earth</a>
-            <a href="contatti.html" class="active">✉ Contatti</a>
+            <a href="#">✉ Contatti</a>
         </nav>
     </header>
 
     <div class="container">
         
         <div class="hero">
-            <h1>Canali di Interazione e Comunicazione</h1>
+            <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
             <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
-            <p>Interfaccia di inoltro per la condivisione di dataset, triangolazioni geometriche e riscontri relativi allo studio del Lavoro e delle ottave oscillatorie.</p>
+            <p>Un centro indipendente di indagine geometrico-frequenziale sul territorio, dedicato all'analisi dei sistemi oscillatori armonici e allo sviluppo della consapevolezza oggettiva.</p>
+            
+            <div class="status-bar">
+                <div class="status-dot"></div>
+                Laboratorio Attivo &bull; Acquisizione Dati
+            </div>
         </div>
 
-        <h2 class="section-title">Inoltro Comunicazioni</h2>
-
-        <div class="contact-grid">
+        <h2 class="section-title">Assi Principali di Indagine</h2>
+        
+        <div class="grid">
             
-            <!-- Colonna Informazioni Geometria/Protocollo -->
-            <div class="info-panel">
-                <h3>Linee Guida per l'Invio</h3>
-                <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, si prega di attenersi ai seguenti criteri:</p>
-                <ul>
-                    <li><strong>Specificità:</strong> Associare la richiesta a uno dei tre assi di indagine principali.</li>
-                    <li><strong>Dati Territoriali:</strong> Per segnalazioni cartografiche, includere possibilmente coordinate decimali o file vettoriali.</li>
-                    <li><strong>Osservazione Oggettiva:</strong> Le comunicazioni riguardanti l'asse meccanico verranno vagliate secondo criteri di auto-osservazione rigorosa.</li>
-                </ul>
-                <div class="secure-note">
-                    [SISTEMA CRITTOGRAFATO]<br>
-                    Le informazioni inviate non vengono cedute a terzi e rimangono vincolate alle attività interne del centro.
-                </div>
+            <div class="card">
+                <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
+                <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
+                <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
             </div>
 
-            <!-- Colonna Form di Contatto vero e proprio -->
-            <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Identificativo / Nome</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Es. Operatore 07" required>
-                    </div>
+            <div class="card">
+                <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
+                <h3>Sistemi di Coordinate e Punti di Interesse</h3>
+                <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
+            </div>
 
-                    <div class="form-group">
-                        <label for="email">Canale Email di Riferimento</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="nome@esempio.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="axis">Asse di Riferimento</label>
-                        <select id="axis" name="axis" class="form-control" required>
-                            <option value="" disabled selected>Seleziona l'ambito d'indagine...</option>
-                            <option value="frequenziale">Asse Frequenziale (Modello Toro / Campi)</option>
-                            <option value="matrice">Asse Matrice (Geometria / Coordinate)</option>
-                            <option value="meccanico">Asse Meccanico (Ottava Universale / Lavoro)</option>
-                            <option value="generale">Informazioni e Collaborazioni Generali</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Tracciato del Messaggio / Dataset</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="Inserisci qui la tua analisi, osservazione o richiesta..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Invia Flusso Dati</button>
-                </form>
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
+                <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
+                <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro" di George Gurdjieff. Analisi dei processi di transizione energetica necessari per il superamento dello stato di sonno psicologico.</p>
             </div>
 
         </div>
@@ -390,3 +329,5 @@
 
 </body>
 </html>
+
+```
