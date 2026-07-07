@@ -14,6 +14,7 @@
             --accent-dim: #1f4275;
             --text-main: #dbdec6; /* Un tono di bianco antico/pergamena tecnica, molto serio */
             --text-muted: #8b949e;
+            --success-color: #2ea043;
         }
 
         body {
@@ -167,7 +168,7 @@
             font-size: 18px;
         }
 
-        /* Struttura a Griglia per i Moduli di Ricerca (Home) */
+        /* Struttura a Griglia per i Moduli di Ricerca (Home e Ricerca) */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -225,6 +226,76 @@
             color: var(--border-color);
             opacity: 0.3;
             pointer-events: none;
+        }
+
+        /* Elementi Avanzati per Sezione Ricerca (Tabella e Progress) */
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .research-table th, .research-table td {
+            padding: 14px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .research-table th {
+            background-color: rgba(34, 49, 71, 0.4);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        .research-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.active {
+            background-color: rgba(46, 160, 67, 0.15);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .badge.progressing {
+            background-color: rgba(88, 166, 255, 0.15);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+
+        .progress-bar-container {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            height: 6px;
+            width: 100px;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 10px;
         }
 
         /* Layout Griglia Sezione Contatti */
@@ -363,40 +434,32 @@
 <body>
 
     <header>
+        <!-- Titolo Centrale Principale -->
         <div class="logo">Tor<span>Project</span></div>
 
         <div class="symbol-separator">━━━━ ❖ ━━━━</div>
         
+        <!-- Menu di Navigazione Interattivo -->
         <nav>
             <a id="nav-home" onclick="showSection('home')" class="active">❖ Home</a>
-            <a href="#">⚚ Linee di Ricerca</a>
+            <a id="nav-ricerca" onclick="showSection('ricerca')">⚚ Linee di Ricerca</a>
             <a href="#">🌐 Mappe Earth</a>
             <a id="nav-contatti" onclick="showSection('contatti')">✉ Contatti</a>
         </nav>
 
+        <!-- Logo a Quattro Poli Posizionato Sotto il Menu -->
         <div class="brand-logo-center">
             <svg viewBox="0 0 110 110" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
-
                 <line x1="50" y1="28" x2="50" y2="82" stroke="#223147" stroke-width="2" />
                 <line x1="60" y1="28" x2="60" y2="82" stroke="#223147" stroke-width="2" />
-                
-                <path d="M 55,28 
-                         C 44,33 66,37 55,42 
-                         C 44,47 66,51 55,56 
-                         C 44,61 66,65 55,70 
-                         C 44,75 66,79 55,82" 
-                      fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
-
+                <path d="M 55,28 C 44,33 66,37 55,42 C 44,47 66,51 55,56 C 44,61 66,65 55,70 C 44,75 66,79 55,82" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
                 <circle cx="55" cy="23" r="5.5" fill="#ffffff" />
                 <circle cx="55" cy="23" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
-
                 <circle cx="55" cy="87" r="5.5" fill="#ffffff" />
                 <circle cx="55" cy="87" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
-
                 <circle cx="26" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
                 <circle cx="26" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
-
                 <circle cx="84" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
                 <circle cx="84" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
             </svg>
@@ -405,6 +468,7 @@
 
     <div class="container">
         
+        <!-- SEZIONE HOME -->
         <div id="section-home" class="page-section active-section">
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
@@ -440,6 +504,76 @@
             </div>
         </div>
 
+        <!-- SEZIONE LINEE DI RICERCA -->
+        <div id="section-ricerca" class="page-section">
+            <div class="hero">
+                <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Monitoraggio permanente dei vettori di studio teorico-sperimentali attivi presso il centro.</p>
+            </div>
+
+            <h2 class="section-title">Matrice dello Stato Ricerche</h2>
+            
+            <!-- Tabella Stato Avanzamento Moduli -->
+            <table class="research-table">
+                <thead>
+                    <tr>
+                        <th>Codice Sigla</th>
+                        <th>Programma Specifico</th>
+                        <th>Ambito Operativo</th>
+                        <th>Progresso</th>
+                        <th>Stato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">TOR-01A</td>
+                        <td>Mappatura Onde Bentov</td>
+                        <td>Asse Frequenziale</td>
+                        <td>
+                            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 75%;"></div></div> 75%
+                        </td>
+                        <td><span class="badge progressing">In Rilievo</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAT-03B</td>
+                        <td>Triangolazione Nodi Terreno</td>
+                        <td>Asse Matrice</td>
+                        <td>
+                            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 40%;"></div></div> 40%
+                        </td>
+                        <td><span class="badge progressing">Acquisizione</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M</td>
+                        <td>Meccanica delle Ottave</td>
+                        <td>Asse Meccanico</td>
+                        <td>
+                            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 90%;"></div></div> 90%
+                        </td>
+                        <td><span class="badge active">Stabile</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="section-title">Approfondimento dei Protocolli</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
+                    <h3>Isolamento della Macchina Biologica</h3>
+                    <p>Sviluppo di processi analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli "intervalli" naturali lungo le ottave discendenti dell'attenzione ordinaria.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
+                    <h3>Integrazione dei Campi di Risonanza</h3>
+                    <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici, basandosi sulla geometria toroidale dell'interazione biologica.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEZIONE CONTATTI -->
         <div id="section-contatti" class="page-section">
             <div class="hero">
                 <h1>Canali di Interazione e Comunicazione</h1>
@@ -505,6 +639,7 @@
         <p>&copy; 2026 TorProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
+    <!-- Logica di Scambio Contenuto Istantaneo -->
     <script>
         function showSection(sectionId) {
             // Nasconde tutte le sezioni
@@ -520,6 +655,9 @@
             if (sectionId === 'home') {
                 document.getElementById('section-home').classList.add('active-section');
                 document.getElementById('nav-home').classList.add('active');
+            } else if (sectionId === 'ricerca') {
+                document.getElementById('section-ricerca').classList.add('active-section');
+                document.getElementById('nav-ricerca').classList.add('active');
             } else if (sectionId === 'contatti') {
                 document.getElementById('section-contatti').classList.add('active-section');
                 document.getElementById('nav-contatti').classList.add('active');
