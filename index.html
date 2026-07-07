@@ -33,20 +33,6 @@
             text-align: center;
         }
 
-        /* Gruppo Brand Centrato: Logo + Scritta allineati orizzontalmente */
-        .brand-container {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .brand-logo svg {
-            display: block;
-            filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.2));
-        }
-
         .logo {
             font-size: 28px;
             font-weight: 800;
@@ -71,6 +57,7 @@
 
         nav {
             margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         nav a {
@@ -82,10 +69,34 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         nav a:hover, nav a.active {
             color: var(--accent-color);
+        }
+
+        /* Contenitore Logo Centrale Sotto il Menu */
+        .brand-logo-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .brand-logo-center svg {
+            display: block;
+            filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.2));
+        }
+
+        /* Gestione Visibilità Sezioni Dinamiche */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active-section {
+            display: block;
         }
 
         .container {
@@ -156,7 +167,7 @@
             font-size: 18px;
         }
 
-        /* Struttura a Griglia per i Moduli di Ricerca */
+        /* Struttura a Griglia per i Moduli di Ricerca (Home) */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -205,7 +216,6 @@
             font-size: 15px;
         }
 
-        /* Glifo decorativo geometrico sullo sfondo della card */
         .card::after {
             content: "◎";
             position: absolute;
@@ -215,6 +225,122 @@
             color: var(--border-color);
             opacity: 0.3;
             pointer-events: none;
+        }
+
+        /* Layout Griglia Sezione Contatti */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.3fr;
+            }
+        }
+
+        .info-panel {
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            font-size: 14px;
+        }
+
+        .info-panel h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .info-panel ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        .info-panel ul li {
+            margin-bottom: 12px;
+        }
+
+        .secure-note {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border-color);
+            color: var(--accent-color);
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .contact-form {
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        select.form-control {
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background-color: var(--accent-dim);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 12px 24px;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
         }
 
         footer {
@@ -237,82 +363,139 @@
 <body>
 
     <header>
-        <div class="brand-container">
-            <div class="brand-logo">
-                <svg viewBox="0 0 110 110" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
-
-                    <line x1="50" y1="28" x2="50" y2="82" stroke="#223147" stroke-width="2" />
-                    <line x1="60" y1="28" x2="60" y2="82" stroke="#223147" stroke-width="2" />
-                    
-                    <path d="M 55,28 
-                             C 44,33 66,37 55,42 
-                             C 44,47 66,51 55,56 
-                             C 44,61 66,65 55,70 
-                             C 44,75 66,79 55,82" 
-                          fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
-
-                    <circle cx="55" cy="23" r="5.5" fill="#ffffff" />
-                    <circle cx="55" cy="23" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
-
-                    <circle cx="55" cy="87" r="5.5" fill="#ffffff" />
-                    <circle cx="55" cy="87" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
-
-                    <circle cx="26" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
-                    <circle cx="26" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
-
-                    <circle cx="84" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
-                    <circle cx="84" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
-                </svg>
-            </div>
-            <div class="logo">Tor<span>Project</span></div>
-        </div>
+        <div class="logo">Tor<span>Project</span></div>
 
         <div class="symbol-separator">━━━━ ❖ ━━━━</div>
         
         <nav>
-            <a href="index.html" class="active">❖ Home</a>
+            <a id="nav-home" onclick="showSection('home')" class="active">❖ Home</a>
             <a href="#">⚚ Linee di Ricerca</a>
             <a href="#">🌐 Mappe Earth</a>
-            <a href="contatti.html">✉ Contatti</a>
+            <a id="nav-contatti" onclick="showSection('contatti')">✉ Contatti</a>
         </nav>
+
+        <div class="brand-logo-center">
+            <svg viewBox="0 0 110 110" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
+
+                <line x1="50" y1="28" x2="50" y2="82" stroke="#223147" stroke-width="2" />
+                <line x1="60" y1="28" x2="60" y2="82" stroke="#223147" stroke-width="2" />
+                
+                <path d="M 55,28 
+                         C 44,33 66,37 55,42 
+                         C 44,47 66,51 55,56 
+                         C 44,61 66,65 55,70 
+                         C 44,75 66,79 55,82" 
+                      fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+
+                <circle cx="55" cy="23" r="5.5" fill="#ffffff" />
+                <circle cx="55" cy="23" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
+
+                <circle cx="55" cy="87" r="5.5" fill="#ffffff" />
+                <circle cx="55" cy="87" r="9" fill="none" stroke="#58a6ff" stroke-width="1.2" stroke-dasharray="2,1.5" />
+
+                <circle cx="26" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
+                <circle cx="26" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
+
+                <circle cx="84" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
+                <circle cx="84" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
+            </svg>
+        </div>
     </header>
 
     <div class="container">
         
-        <div class="hero">
-            <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
-            <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
-            <p>Un centro indipendente di indagine geometrico-frequenziale sul territorio, dedicato all'analisi dei sistemi oscillatori armonici e allo sviluppo della consapevolezza oggettiva.</p>
+        <div id="section-home" class="page-section active-section">
+            <div class="hero">
+                <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Un centro indipendente di indagine geometrico-frequenziale sul territorio, dedicato all'analisi dei sistemi oscillatori armonici e allo sviluppo della consapevolezza oggettiva.</p>
+                
+                <div class="status-bar">
+                    <div class="status-dot"></div>
+                    Laboratorio Attivo &bull; Acquisizione Dati
+                </div>
+            </div>
+
+            <h2 class="section-title">Assi Principali di Indagine</h2>
             
-            <div class="status-bar">
-                <div class="status-dot"></div>
-                Laboratorio Attivo &bull; Acquisizione Dati
+            <div class="grid">
+                <div class="card">
+                    <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
+                    <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
+                    <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
+                    <h3>Sistemi di Coordinate e Punti di Interesse</h3>
+                    <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
+                    <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
+                    <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro" di George Gurdjieff. Analisi dei processi di transizione energetica necessari per il superamento dello stato di sonno psicologico.</p>
+                </div>
             </div>
         </div>
 
-        <h2 class="section-title">Assi Principali di Indagine</h2>
-        
-        <div class="grid">
-            
-            <div class="card">
-                <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
-                <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
-                <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
+        <div id="section-contatti" class="page-section">
+            <div class="hero">
+                <h1>Canali di Interazione e Comunicazione</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Interfaccia di inoltro per la condivisione di dataset, triangolazioni geometriche e riscontri relativi allo studio del Lavoro e delle ottave oscillatorie.</p>
             </div>
 
-            <div class="card">
-                <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
-                <h3>Sistemi di Coordinate e Punti di Interesse</h3>
-                <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
-            </div>
+            <h2 class="section-title">Inoltro Comunicazioni</h2>
 
-            <div class="card">
-                <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
-                <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
-                <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro" di George Gurdjieff. Analisi dei processi di transizione energetica necessari per il superamento dello stato di sonno psicologico.</p>
-            </div>
+            <div class="contact-grid">
+                <div class="info-panel">
+                    <h3>Linee Guida per l'Invio</h3>
+                    <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, si prega di attenersi ai seguenti criteri:</p>
+                    <ul>
+                        <li><strong>Specificità:</strong> Associare la richiesta a uno dei tre assi di indagine principali.</li>
+                        <li><strong>Dati Territoriali:</strong> Per segnalazioni cartografiche, includere possibilmente coordinate decimali o file vettoriali.</li>
+                        <li><strong>Osservazione Oggettiva:</strong> Le comunicazioni riguardanti l'asse meccanico verranno vagliate secondo criteri di auto-osservazione rigorosa.</li>
+                    </ul>
+                    <div class="secure-note">
+                        [SISTEMA CRITTOGRAFATO]<br>
+                        Le informazioni inviate non vengono cedute a terzi e rimangono vincolate alle attività interne del centro.
+                    </div>
+                </div>
 
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Identificativo / Nome</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Es. Operatore 07" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Canale Email di Riferimento</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="nome@esempio.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="axis">Asse di Riferimento</label>
+                            <select id="axis" name="axis" class="form-control" required>
+                                <option value="" disabled selected>Seleziona l'ambito d'indagine...</option>
+                                <option value="frequenziale">Asse Frequenziale (Modello Toro / Campi)</option>
+                                <option value="matrice">Asse Matrice (Geometria / Coordinate)</option>
+                                <option value="meccanico">Asse Meccanico (Ottava Universale / Lavoro)</option>
+                                <option value="generale">Informazioni e Collaborazioni Generali</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tracciato del Messaggio / Dataset</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Inserisci qui la tua analisi, osservazione o richiesta..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Invia Flusso Dati</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -322,5 +505,26 @@
         <p>&copy; 2026 TorProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
+    <script>
+        function showSection(sectionId) {
+            // Nasconde tutte le sezioni
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            // Rimuove l'evidenziazione dai link del menu
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Mostra solo la sezione selezionata e illumina il rispettivo pulsante
+            if (sectionId === 'home') {
+                document.getElementById('section-home').classList.add('active-section');
+                document.getElementById('nav-home').classList.add('active');
+            } else if (sectionId === 'contatti') {
+                document.getElementById('section-contatti').classList.add('active-section');
+                document.getElementById('nav-contatti').classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
