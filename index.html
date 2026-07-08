@@ -501,7 +501,6 @@
 
     <div class="container">
         
-        <!-- SEZIONE HOME -->
         <div id="section-home" class="page-section active-section">
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
@@ -530,7 +529,6 @@
             </div>
         </div>
 
-        <!-- SEZIONE LINEE DI RICERCA -->
         <div id="section-ricerca" class="page-section">
             <div class="hero">
                 <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
@@ -596,7 +594,6 @@
             </div>
         </div>
 
-        <!-- PAGINA DEDICATA: MAPPATURA ONDE BENTOV CON 2 IMMAGINI -->
         <div id="section-bentov-detail" class="page-section">
             <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
             
@@ -606,7 +603,6 @@
                 <p>Protocollo Strumentale TOR-01A &bull; Analisi dei Ritmi di Risonanza Fisiologica e Universo Toroidale</p>
             </div>
 
-            <!-- IMMAGINE 1 -->
             <div class="card" style="margin-top: 30px;">
                 <div class="card-meta"><span>🌀</span> Schema 1 - Oscillazioni Biologiche</div>
                 <h3>Diagramma delle Oscillazioni e Micro-Moto Cardiaco</h3>
@@ -614,12 +610,11 @@
 
                 <div class="img-magnifier-container">
                     <div id="magnifier-glass-1" class="img-magnifier-glass"></div>
-                    <img id="bentov-img-1" src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
+                    <img id="bentov-img-1" src="immagini/onde%20Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
                 </div>
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <!-- IMMAGINE 2 -->
             <div class="card">
                 <div class="card-meta"><span>🌐</span> Schema 2 - Modello Cosmologico</div>
                 <h3>universo toroidale Bentov</h3>
@@ -627,13 +622,12 @@
 
                 <div class="img-magnifier-container">
                     <div id="magnifier-glass-2" class="img-magnifier-glass"></div>
-                    <img id="bentov-img-2" src="immagini/universo toroidale Bentov.jpg" alt="Universo Toroidale Bentov" class="card-image" onclick="openModal(this.src)">
+                    <img id="bentov-img-2" src="immagini/universo%20toroidale%20Bentov.png" alt="Universo Toroidale Bentov" class="card-image" onclick="openModal(this.src)">
                 </div>
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
         </div>
 
-        <!-- SEZIONE CONTATTI AGGIORNATA PER INVIO FISICO DI FILE ED ALLEGATI -->
         <div id="section-contatti" class="page-section">
             <div class="hero">
                 <h1>Canali di Interazione e Inoltro Dati</h1>
@@ -656,10 +650,8 @@
                     </p>
                 </div>
                 <div class="contact-form">
-                    <!-- Form con multipart/form-data per consentire l'invio di allegati -->
                     <form action="https://formsubmit.co/orione30@protonmail.com" method="POST" enctype="multipart/form-data">
                         
-                        <!-- Configurazione FormSubmit -->
                         <input type="hidden" name="_subject" value="[TorProject] Nuovo Contributo / Allegato Ricevuto">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
@@ -686,7 +678,6 @@
                             <textarea id="message" name="Dati_e_Note" class="form-control" rows="4" placeholder="Inserisci qui i dati, le coordinate o la descrizione..." required></textarea>
                         </div>
 
-                        <!-- Campo per Caricare Immagini o File -->
                         <div class="form-group">
                             <label for="attachment">📎 Allega File / Immagine (Opzionale)</label>
                             <input type="file" id="attachment" name="attachment" class="form-control" accept="image/*,.pdf,.zip,.txt">
@@ -700,7 +691,6 @@
 
     </div>
 
-    <!-- Modal per Schermo Intero -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="imgModalTarget">
@@ -711,7 +701,6 @@
         <p>&copy; 2026 TorProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
-    <!-- Scripts JavaScript -->
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
