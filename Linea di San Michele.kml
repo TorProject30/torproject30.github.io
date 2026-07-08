@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="document">
+	<name>Linea di San Michele</name>
+	<gx:CascadingStyle kml:id="__managed_style_062F13350140788CB0F8_highlight">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>9.6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_062F13350140788CB0F8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_062F13350140788CB0F8_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_062F13350140788CB0F8_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_062F13350140788CB0F8_normal">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6.4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_04F83986A8407887FCDB_highlight">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_04F83986A8407887FCDB_normal">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=fbc02d&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+				<gx:displayMode>card</gx:displayMode>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_04F83986A8407887FCDB">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_04F83986A8407887FCDB_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_04F83986A8407887FCDB_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0B8C0B84B8407887FCB9">
+		<gx:mid>/m/01k65j</gx:mid>
+		<gx:fid>0x484fbc67fdc50715:0x9ac017e72720f9e0</gx:fid>
+		<LookAt>
+			<longitude>-10.540554</longitude>
+			<latitude>51.7712834</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>1344.827606003632</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-10.5405245,51.7706615,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09E9221F4C4078888031">
+		<gx:mid>/g/1td2lxlb</gx:mid>
+		<gx:fid>0x486adb4d957a0e09:0xfa70a9ee4f5f29e6</gx:fid>
+		<LookAt>
+			<longitude>-5.4780804</longitude>
+			<latitude>50.1165068</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>648.3460316949074</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-5.4780804,50.1165068,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="00B9604EDF407888DB44">
+		<gx:mid>/m/01p8h6</gx:mid>
+		<gx:fid>0x480ea8d67c9ceeb3:0xc5834ce47e0dc3fe</gx:fid>
+		<LookAt>
+			<longitude>-1.52776135</longitude>
+			<latitude>48.6244628</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>7683.039633857175</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>-1.511457,48.63606299999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="05965ACF344078895DFF">
+		<gx:mid>/m/02qnz2y</gx:mid>
+		<gx:fid>0x4788487b8aa4786b:0xcdef9c40b489db51</gx:fid>
+		<LookAt>
+			<longitude>7.3422282</longitude>
+			<latitude>45.096365</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>719.5358887804622</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>7.3422282,45.09636499999999,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="01A75823A2407889EFA1">
+		<gx:mid>/m/02szyy</gx:mid>
+		<gx:fid>0x1337983384dcf11f:0xbb678ae3e32fbb03</gx:fid>
+		<LookAt>
+			<longitude>15.9547699</longitude>
+			<latitude>41.7080134</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>764.7901639730889</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>15.9547699,41.7080134,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EB4CE945E40788B01FC">
+		<gx:mid>/m/0417gdn</gx:mid>
+		<gx:fid>0x151dbbeb1fe440db:0xe244c2dc05007fa</gx:fid>
+		<LookAt>
+			<longitude>34.9701292</longitude>
+			<latitude>32.8272353</latitude>
+			<altitude>0</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>870.8253220598174</range>
+			<altitudeMode>relativeToGround</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_04F83986A8407887FCDB</styleUrl>
+		<Point>
+			<altitudeMode>relativeToGround</altitudeMode>
+			<coordinates>34.9701292,32.8272353,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A50E227CE40788C7A79">
+		<name>Linea di San Michele</name>
+		<LookAt>
+			<longitude>-10.53349007370701</longitude>
+			<latitude>51.94904145130169</latitude>
+			<altitude>86.3669791607004</altitude>
+			<heading>29.10464028060506</heading>
+			<tilt>24.82235906105606</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>280910.4987290874</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_062F13350140788CB0F8</styleUrl>
+		<LineString>
+			<coordinates>
+				34.96614426813515,32.82920146801901,0 15.95718379306189,41.71482840665789,0 7.350315954088682,45.22286437783583,0 -1.516475693363359,48.65808189217575,0 -5.473878346596559,50.12434001586578,0 -10.54073525985767,51.77230898843279,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>
