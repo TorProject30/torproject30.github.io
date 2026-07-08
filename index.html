@@ -180,6 +180,7 @@
             padding: 30px;
             position: relative;
             transition: transform 0.2s, border-color 0.2s;
+            margin-bottom: 25px;
         }
 
         .card:hover {
@@ -215,7 +216,7 @@
             font-size: 15px;
         }
 
-        /* Stile Immagine e Lente d'Ingrandimento Magnifier */
+        /* Stile Immagini e Lenti d'Ingrandimento (Magnifier) */
         .img-magnifier-container {
             position: relative;
             display: inline-block;
@@ -583,7 +584,7 @@
                     <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
                     <h3>Mappatura Onde Bentov</h3>
                     <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici, basandosi sulla geometria toroidale dell'interazione biologica.</p>
-                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata con lente d'ingrandimento</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata con le mappe interattive</p>
                 </div>
                 <div class="card">
                     <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
@@ -599,19 +600,31 @@
             <div class="hero">
                 <h1>Mappatura Onde Bentov</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
-                <p>Protocollo Strumentale TOR-01A &bull; Analisi dei Ritmi di Risonanza Fisiologica e Micro-Moto Cardiaco</p>
+                <p>Protocollo Strumentale TOR-01A &bull; Analisi dei Ritmi di Risonanza Fisiologica e Universo Toroidale</p>
             </div>
 
             <div class="card" style="margin-top: 30px;">
-                <div class="card-meta"><span>🌀</span> Schema Frequenziale Interattivo</div>
-                <h3>Diagramma delle Oscillazioni e Toro Biologico</h3>
-                <p>Passa il mouse sull'immagine per attivare la <strong>lente d'ingrandimento</strong> sui dettagli, oppure clicca per aprire la vista a schermo intero.</p>
+                <div class="card-meta"><span>🌀</span> Schema 1 - Oscillazioni Biologiche</div>
+                <h3>Diagramma delle Oscillazioni e Micro-Moto Cardiaco</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
 
                 <div class="img-magnifier-container">
-                    <div id="magnifier-glass" class="img-magnifier-glass"></div>
-                    <img id="bentov-img" src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
+                    <div id="magnifier-glass-1" class="img-magnifier-glass"></div>
+                    <img id="bentov-img-1" src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
                 </div>
-                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per la vista Fullscreen</div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <div class="card">
+                <div class="card-meta"><span>🌐</span> Schema 2 - Modello Cosmologico</div>
+                <h3>Universo Toroidale Bentov</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-2" class="img-magnifier-glass"></div>
+                    <img id="bentov-img-2" src="immagini/universo toroidale Bentov.jpg" alt="Universo Toroidale Bentov" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
         </div>
 
@@ -682,29 +695,36 @@
                 document.getElementById('section-bentov-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
                 
-                // Inizializza la lente d'ingrandimento quando la sezione diventa visibile
+                // Inizializza la lente d'ingrandimento per ENTRAMBE le immagini
                 setTimeout(() => {
-                    initMagnifier("bentov-img", "magnifier-glass", 2.5);
+                    initMagnifier("bentov-img-1", "magnifier-glass-1", 2.5);
+                    initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
                 }, 100);
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* Funzione Lente d'Ingrandimento (Magnifier) */
+        /* Funzione Lente d'Ingrandimento Generale */
         function initMagnifier(imgID, glassID, zoom) {
             const img = document.getElementById(imgID);
             const glass = document.getElementById(glassID);
+
+            if (!img || !glass) return;
 
             glass.style.backgroundImage = "url('" + img.src + "')";
             glass.style.backgroundRepeat = "no-repeat";
             glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
 
-            img.addEventListener("mousemove", moveMagnifier);
-            glass.addEventListener("mousemove", moveMagnifier);
+            img.onmousemove = moveMagnifier;
+            glass.onmousemove = moveMagnifier;
             
-            img.addEventListener("mouseenter", () => glass.style.display = "block");
-            img.addEventListener("mouseleave", () => glass.style.display = "none");
+            img.onmouseenter = () => {
+                glass.style.backgroundImage = "url('" + img.src + "')";
+                glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+                glass.style.display = "block";
+            };
+            img.onmouseleave = () => glass.style.display = "none";
 
             function moveMagnifier(e) {
                 e.preventDefault();
