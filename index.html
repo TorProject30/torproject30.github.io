@@ -12,7 +12,7 @@
             --border-color: #223147;
             --accent-color: #58a6ff;
             --accent-dim: #1f4275;
-            --text-main: #dbdec6; /* Un tono di bianco antico/pergamena tecnica, molto serio */
+            --text-main: #dbdec6;
             --text-muted: #8b949e;
             --success-color: #2ea043;
         }
@@ -126,7 +126,6 @@
             margin: 0 auto;
         }
 
-        /* Indicatore di stato del laboratorio stile istituzionale */
         .status-bar {
             display: inline-flex;
             align-items: center;
@@ -168,7 +167,6 @@
             font-size: 18px;
         }
 
-        /* Struttura a Griglia per i Moduli di Ricerca (Home e Ricerca) */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -228,7 +226,7 @@
             pointer-events: none;
         }
 
-        /* Stile Immagini nei Moduli */
+        /* Stile Immagini nei Moduli con Effetto Click */
         .card-image-container {
             margin-top: 20px;
             text-align: center;
@@ -240,6 +238,59 @@
             border-radius: 6px;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card-image:hover {
+            transform: scale(1.01);
+            border-color: var(--accent-color);
+        }
+
+        .image-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Modal/Lightbox per Ingrandimento Immagini */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 15, 23, 0.92);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
         }
 
         /* Elementi Avanzati per Sezione Ricerca (Tabella e Progress) */
@@ -267,6 +318,15 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 12px;
+        }
+
+        .research-table tr.clickable-row {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .research-table tr.clickable-row:hover {
+            background-color: rgba(88, 166, 255, 0.08);
         }
 
         .research-table tr:last-child td {
@@ -448,12 +508,10 @@
 <body>
 
     <header>
-        <!-- Titolo Centrale Principale -->
         <div class="logo">Tor<span>Project</span></div>
 
         <div class="symbol-separator">━━━━ ❖ ━━━━</div>
         
-        <!-- Menu di Navigazione Interattivo -->
         <nav>
             <a id="nav-home" onclick="showSection('home')" class="active">❖ Home</a>
             <a id="nav-ricerca" onclick="showSection('ricerca')">⚚ Linee di Ricerca</a>
@@ -461,7 +519,6 @@
             <a id="nav-contatti" onclick="showSection('contatti')">✉ Contatti</a>
         </nav>
 
-        <!-- Logo a Quattro Poli Posizionato Sotto il Menu -->
         <div class="brand-logo-center">
             <svg viewBox="0 0 110 110" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
@@ -482,7 +539,6 @@
 
     <div class="container">
         
-        <!-- SEZIONE HOME -->
         <div id="section-home" class="page-section active-section">
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
@@ -501,7 +557,7 @@
                 <div class="card">
                     <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
                     <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
-                    <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio географиco e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
+                    <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
                 </div>
 
                 <div class="card">
@@ -518,7 +574,6 @@
             </div>
         </div>
 
-        <!-- SEZIONE LINEE DI RICERCA -->
         <div id="section-ricerca" class="page-section">
             <div class="hero">
                 <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
@@ -528,7 +583,6 @@
 
             <h2 class="section-title">Matrice dello Stato Ricerche</h2>
             
-            <!-- Tabella Stato Avanzamento Moduli -->
             <table class="research-table">
                 <thead>
                     <tr>
@@ -540,8 +594,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">TOR-01A</td>
+                    <tr class="clickable-row" onclick="scrollToProtocol('protocol-tor01')">
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">TOR-01A 🔗</td>
                         <td>Mappatura Onde Bentov</td>
                         <td>Asse Frequenziale</td>
                         <td>
@@ -558,8 +612,8 @@
                         </td>
                         <td><span class="badge progressing">Acquisizione</span></td>
                     </tr>
-                    <tr>
-                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M</td>
+                    <tr class="clickable-row" onclick="scrollToProtocol('protocol-gur07')">
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M 🔗</td>
                         <td>Meccanica delle Ottave</td>
                         <td>Asse Meccanico</td>
                         <td>
@@ -573,26 +627,25 @@
             <h2 class="section-title">Approfondimento dei Protocolli</h2>
 
             <div class="grid">
-                <div class="card">
+                <div class="card" id="protocol-tor01">
                     <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
                     <h3>Integrazione dei Campi di Risonanza &amp; Onde Bentov</h3>
                     <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici, basandosi sulla geometria toroidale dell'interazione biologica.</p>
                     
-                    <!-- Immagine per Mappatura Onde Bentov -->
                     <div class="card-image-container">
-                        <img src="immagini/bentov.jpg" alt="Mappatura Onde Bentov" class="card-image">
+                        <img src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
+                        <div class="image-hint">🔍 Clicca sull'immagine per ingrandire la mappa tecnica</div>
                     </div>
                 </div>
 
-                <div class="card">
+                <div class="card" id="protocol-gur07">
                     <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
                     <h3>Isolamento della Macchina Biologica</h3>
-                    <p>Sviluppo di processi analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli "intervalli" naturali lungo le ottave discendenti dell'attenzione ordinaria.</p>
+                    <p>Sviluppo di процессов analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli "intervalli" naturali lungo le ottave discendenti dell'attenzione ordinaria.</p>
                 </div>
             </div>
         </div>
 
-        <!-- SEZIONE CONTATTI -->
         <div id="section-contatti" class="page-section">
             <div class="hero">
                 <h1>Canali di Interazione e Comunicazione</h1>
@@ -653,24 +706,25 @@
 
     </div>
 
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="imgModalTarget">
+    </div>
+
     <footer>
         <div class="footer-symbols">🜁 🜂 🜃 🜄</div>
         <p>&copy; 2026 TorProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
-    <!-- Logica di Scambio Contenuto Istantaneo -->
     <script>
         function showSection(sectionId) {
-            // Nasconde tutte le sezioni
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active-section');
             });
-            // Rimuove l'evidenziazione dai link del menu
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
             });
 
-            // Mostra solo la sezione selezionata e illumina il rispettivo pulsante
             if (sectionId === 'home') {
                 document.getElementById('section-home').classList.add('active-section');
                 document.getElementById('nav-home').classList.add('active');
@@ -681,6 +735,30 @@
                 document.getElementById('section-contatti').classList.add('active-section');
                 document.getElementById('nav-contatti').classList.add('active');
             }
+        }
+
+        /* Scorrimento Fluido verso il Protocollo Selezionato */
+        function scrollToProtocol(elementId) {
+            const target = document.getElementById(elementId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                target.style.borderColor = '#58a6ff';
+                setTimeout(() => {
+                    target.style.borderColor = '#223147';
+                }, 1500);
+            }
+        }
+
+        /* Funzioni Modal Ingrandimento Immagini */
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('imgModalTarget');
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
         }
     </script>
 </body>
