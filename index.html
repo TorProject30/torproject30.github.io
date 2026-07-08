@@ -630,32 +630,53 @@
 
         <div id="section-contatti" class="page-section">
             <div class="hero">
-                <h1>Canali di Interazione e Comunicazione</h1>
+                <h1>Canali di Interazione e Inoltro Dati</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
-                <p>Interfaccia di inoltro per la condivisione di dataset, triangolazioni geometriche e riscontri relativi allo studio del Lavoro e delle ottave oscillatorie.</p>
+                <p>Interfaccia di invio diretto per dataset, triangolazioni geometriche e segnalazioni. I materiali ricevuti verranno esaminati e, se approvati, integrati nelle rispettive sezioni di ricerca.</p>
             </div>
 
-            <h2 class="section-title">Inoltro Comunicazioni</h2>
+            <h2 class="section-title">Inoltro Comunicazioni a TorProject</h2>
             <div class="contact-grid">
                 <div class="info-panel">
-                    <h3>Linee Guida per l'Invio</h3>
-                    <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, si prega di attenersi ai criteri di osservazione oggettiva e accuratezza dei dati.</p>
+                    <h3>Linee Guida e Pubblicazione</h3>
+                    <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, ti preghiamo di attenerti ai criteri di osservazione oggettiva e accuratezza dei dati.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-size: 13px;">
+                        📧 <strong>Destinazione diretta:</strong><br>
+                        <code>orione30@protonmail.com</code>
+                    </p>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">
+                        ✔ I contributi validati verranno pubblicati nelle relative tabelle e schede del centro.
+                    </p>
                 </div>
                 <div class="contact-form">
-                    <form action="#" method="POST">
+                    <form action="https://formsubmit.co/orione30@protonmail.com" method="POST">
+                        
+                        <input type="hidden" name="_subject" value="[TorProject] Nuovo Contributo / Dataset Ricevuto">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+
                         <div class="form-group">
-                            <label for="name">Identificativo / Nome</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Es. Operatore 07" required>
+                            <label for="name">Identificativo / Nome Operatore</label>
+                            <input type="text" id="name" name="Nome_Operatore" class="form-control" placeholder="Es. Operatore 07" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Canale Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="nome@esempio.com" required>
+                            <label for="email">Canale Email di Risposta</label>
+                            <input type="email" id="email" name="Email_Contatto" class="form-control" placeholder="nome@esempio.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" name="message" class="form-control" rows="4" placeholder="Inserisci il tuo testo..." required></textarea>
+                            <label for="ambito">Sezione / Ambito del Contributo</label>
+                            <select id="ambito" name="Sezione_Destinazione" class="form-control">
+                                <option value="Onde Bentov / Asse Frequenziale">TOR-01A - Mappatura Onde Bentov</option>
+                                <option value="Triangolazione Nodi / Asse Matrice">MAT-03B - Triangolazione Nodi Terreno</option>
+                                <option value="Meccanica Ottave / Asse Meccanico">GUR-07M - Meccanica delle Ottave</option>
+                                <option value="Altro / Generale">Altra Segnalazione Generica</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn-submit">Invia Flusso Dati</button>
+                        <div class="form-group">
+                            <label for="message">Messaggio / Dati da Inviare</label>
+                            <textarea id="message" name="Dati_e_Note" class="form-control" rows="5" placeholder="Inserisci qui i dati, le coordinate o la descrizione dei file inviati..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">🚀 Invia Fisicamente a TorProject</button>
                     </form>
                 </div>
             </div>
