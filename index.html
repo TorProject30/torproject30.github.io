@@ -26,7 +26,7 @@
             line-height: 1.7;
         }
 
-        /* Header Centrato in Stile Universitario / Istituzionale */
+        /* Header Centrato */
         header {
             background-color: var(--panel-color);
             border-bottom: 2px solid var(--border-color);
@@ -77,7 +77,7 @@
             color: var(--accent-color);
         }
 
-        /* Contenitore Logo Centrale Sotto il Menu */
+        /* Logo Centrale */
         .brand-logo-center {
             display: flex;
             justify-content: center;
@@ -215,46 +215,46 @@
             font-size: 15px;
         }
 
-        .card::after {
-            content: "◎";
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            font-size: 32px;
-            color: var(--border-color);
-            opacity: 0.3;
-            pointer-events: none;
+        /* Stile Immagine e Lente d'Ingrandimento Magnifier */
+        .img-magnifier-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
         }
 
-        /* Stile Immagini nei Moduli con Effetto Click */
-        .card-image-container {
-            margin-top: 20px;
-            text-align: center;
+        .img-magnifier-glass {
+            position: absolute;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            cursor: none;
+            width: 200px;
+            height: 200px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            pointer-events: none;
+            z-index: 99;
         }
 
         .card-image {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 6px;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .card-image:hover {
-            transform: scale(1.01);
-            border-color: var(--accent-color);
+            cursor: crosshair;
+            display: block;
         }
 
         .image-hint {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-muted);
-            margin-top: 6px;
+            margin-top: 12px;
+            text-align: center;
             font-style: italic;
         }
 
-        /* Modal/Lightbox per Ingrandimento Immagini */
+        /* Modal / Fullscreen Lightbox */
         .modal {
             display: none;
             position: fixed;
@@ -263,8 +263,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(11, 15, 23, 0.92);
-            backdrop-filter: blur(5px);
+            background-color: rgba(11, 15, 23, 0.95);
+            backdrop-filter: blur(6px);
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -272,10 +272,10 @@
 
         .modal-content {
             max-width: 90%;
-            max-height: 80vh;
+            max-height: 85vh;
             border: 2px solid var(--accent-color);
             border-radius: 8px;
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.35);
         }
 
         .modal-close {
@@ -286,14 +286,13 @@
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.2s;
         }
 
         .modal-close:hover {
             color: var(--accent-color);
         }
 
-        /* Elementi Avanzati per Sezione Ricerca (Tabella e Progress) */
+        /* Tabella Ricerca */
         .research-table {
             width: 100%;
             border-collapse: collapse;
@@ -326,11 +325,7 @@
         }
 
         .research-table tr.clickable-row:hover {
-            background-color: rgba(88, 166, 255, 0.08);
-        }
-
-        .research-table tr:last-child td {
-            border-bottom: none;
+            background-color: rgba(88, 166, 255, 0.12);
         }
 
         .badge {
@@ -340,7 +335,6 @@
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .badge.active {
@@ -372,7 +366,29 @@
             border-radius: 10px;
         }
 
-        /* Layout Griglia Sezione Contatti */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent-dim);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 18px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Layout Contatti */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -385,45 +401,18 @@
             }
         }
 
-        .info-panel {
+        .info-panel, .contact-form {
             background-color: var(--panel-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 25px;
-            font-size: 14px;
         }
 
         .info-panel h3 {
             color: #fff;
             margin-top: 0;
-            font-size: 18px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
-        }
-
-        .info-panel ul {
-            padding-left: 20px;
-            color: var(--text-muted);
-        }
-
-        .info-panel ul li {
-            margin-bottom: 12px;
-        }
-
-        .secure-note {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--border-color);
-            color: var(--accent-color);
-            font-family: monospace;
-            font-size: 12px;
-        }
-
-        .contact-form {
-            background-color: var(--panel-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 30px;
         }
 
         .form-group {
@@ -434,7 +423,6 @@
             display: block;
             font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
             color: var(--text-muted);
             margin-bottom: 8px;
             font-weight: 600;
@@ -449,23 +437,6 @@
             padding: 12px;
             color: #fff;
             font-family: inherit;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        select.form-control {
-            cursor: pointer;
-            color: var(--text-main);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
         }
 
         .btn-submit {
@@ -476,10 +447,8 @@
             font-size: 13px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
             border-radius: 4px;
             cursor: pointer;
-            transition: background 0.3s, color 0.3s;
             width: 100%;
         }
 
@@ -496,20 +465,12 @@
             border-top: 1px solid var(--border-color);
             margin-top: 80px;
         }
-
-        .footer-symbols {
-            font-size: 18px;
-            letter-spacing: 15px;
-            margin-bottom: 15px;
-            color: var(--border-color);
-        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">Tor<span>Project</span></div>
-
         <div class="symbol-separator">━━━━ ❖ ━━━━</div>
         
         <nav>
@@ -544,28 +505,21 @@
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
                 <p>Un centro indipendente di indagine geometrico-frequenziale sul territorio, dedicato all'analisi dei sistemi oscillatori armonici e allo sviluppo della consapevolezza oggettiva.</p>
-                
-                <div class="status-bar">
-                    <div class="status-dot"></div>
-                    Laboratorio Attivo &bull; Acquisizione Dati
-                </div>
+                <div class="status-bar"><div class="status-dot"></div>Laboratorio Attivo &bull; Acquisizione Dati</div>
             </div>
 
             <h2 class="section-title">Assi Principali di Indagine</h2>
-            
             <div class="grid">
                 <div class="card">
                     <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
                     <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
                     <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
                 </div>
-
                 <div class="card">
                     <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
                     <h3>Sistemi di Coordinate e Punti di Interesse</h3>
                     <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
                 </div>
-
                 <div class="card">
                     <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
                     <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
@@ -582,7 +536,6 @@
             </div>
 
             <h2 class="section-title">Matrice dello Stato Ricerche</h2>
-            
             <table class="research-table">
                 <thead>
                     <tr>
@@ -594,9 +547,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable-row" onclick="scrollToProtocol('protocol-tor01')">
+                    <tr class="clickable-row" onclick="showSection('bentov-detail')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">TOR-01A 🔗</td>
-                        <td>Mappatura Onde Bentov</td>
+                        <td style="color: var(--accent-color); font-weight: bold;">Mappatura Onde Bentov ➔</td>
                         <td>Asse Frequenziale</td>
                         <td>
                             <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 75%;"></div></div> 75%
@@ -612,8 +565,8 @@
                         </td>
                         <td><span class="badge progressing">Acquisizione</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="scrollToProtocol('protocol-gur07')">
-                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M 🔗</td>
+                    <tr>
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M</td>
                         <td>Meccanica delle Ottave</td>
                         <td>Asse Meccanico</td>
                         <td>
@@ -625,24 +578,40 @@
             </table>
 
             <h2 class="section-title">Approfondimento dei Protocolli</h2>
-
             <div class="grid">
-                <div class="card" id="protocol-tor01">
+                <div class="card" onclick="showSection('bentov-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
-                    <h3>Integrazione dei Campi di Risonanza &amp; Onde Bentov</h3>
+                    <h3>Mappatura Onde Bentov</h3>
                     <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici, basandosi sulla geometria toroidale dell'interazione biologica.</p>
-                    
-                    <div class="card-image-container">
-                        <img src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
-                        <div class="image-hint">🔍 Clicca sull'immagine per ingrandire la mappa tecnica</div>
-                    </div>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata con lente d'ingrandimento</p>
                 </div>
-
-                <div class="card" id="protocol-gur07">
+                <div class="card">
                     <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
                     <h3>Isolamento della Macchina Biologica</h3>
-                    <p>Sviluppo di процессов analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli "intervalli" naturali lungo le ottave discendenti dell'attenzione ordinaria.</p>
+                    <p>Sviluppo di processi analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli intervalli naturali lungo le ottave discendenti.</p>
                 </div>
+            </div>
+        </div>
+
+        <div id="section-bentov-detail" class="page-section">
+            <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
+            
+            <div class="hero">
+                <h1>Mappatura Onde Bentov</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Protocollo Strumentale TOR-01A &bull; Analisi dei Ritmi di Risonanza Fisiologica e Micro-Moto Cardiaco</p>
+            </div>
+
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-meta"><span>🌀</span> Schema Frequenziale Interattivo</div>
+                <h3>Diagramma delle Oscillazioni e Toro Biologico</h3>
+                <p>Passa il mouse sull'immagine per attivare la <strong>lente d'ingrandimento</strong> sui dettagli, oppure clicca per aprire la vista a schermo intero.</p>
+
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass" class="img-magnifier-glass"></div>
+                    <img id="bentov-img" src="immagini/onde Bentov.jpg" alt="Mappatura Onde Bentov" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per la vista Fullscreen</div>
             </div>
         </div>
 
@@ -654,50 +623,25 @@
             </div>
 
             <h2 class="section-title">Inoltro Comunicazioni</h2>
-
             <div class="contact-grid">
                 <div class="info-panel">
                     <h3>Linee Guida per l'Invio</h3>
-                    <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, si prega di attenersi ai seguenti criteri:</p>
-                    <ul>
-                        <li><strong>Specificità:</strong> Associare la richiesta a uno dei tre assi di indagine principali.</li>
-                        <li><strong>Dati Territoriali:</strong> Per segnalazioni cartografiche, includere possibilmente coordinate decimali o file vettoriali.</li>
-                        <li><strong>Osservazione Oggettiva:</strong> Le comunicazioni riguardanti l'asse meccanico verranno vagliate secondo criteri di auto-osservazione rigorosa.</li>
-                    </ul>
-                    <div class="secure-note">
-                        [SISTEMA CRITTOGRAFATO]<br>
-                        Le informazioni inviate non vengono cedute a terzi e rimangono vincolate alle attività interne del centro.
-                    </div>
+                    <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, si prega di attenersi ai criteri di osservazione oggettiva e accuratezza dei dati.</p>
                 </div>
-
                 <div class="contact-form">
                     <form action="#" method="POST">
                         <div class="form-group">
                             <label for="name">Identificativo / Nome</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Es. Operatore 07" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="email">Canale Email di Riferimento</label>
+                            <label for="email">Canale Email</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="nome@esempio.com" required>
                         </div>
-
                         <div class="form-group">
-                            <label for="axis">Asse di Riferimento</label>
-                            <select id="axis" name="axis" class="form-control" required>
-                                <option value="" disabled selected>Seleziona l'ambito d'indagine...</option>
-                                <option value="frequenziale">Asse Frequenziale (Modello Toro / Campi)</option>
-                                <option value="matrice">Asse Matrice (Geometria / Coordinate)</option>
-                                <option value="meccanico">Asse Meccanico (Ottava Universale / Lavoro)</option>
-                                <option value="generale">Informazioni e Collaborazioni Generali</option>
-                            </select>
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" name="message" class="form-control" rows="4" placeholder="Inserisci il tuo testo..." required></textarea>
                         </div>
-
-                        <div class="form-group">
-                            <label for="message">Tracciato del Messaggio / Dataset</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Inserisci qui la tua analisi, osservazione o richiesta..." required></textarea>
-                        </div>
-
                         <button type="submit" class="btn-submit">Invia Flusso Dati</button>
                     </form>
                 </div>
@@ -734,22 +678,62 @@
             } else if (sectionId === 'contatti') {
                 document.getElementById('section-contatti').classList.add('active-section');
                 document.getElementById('nav-contatti').classList.add('active');
-            }
-        }
-
-        /* Scorrimento Fluido verso il Protocollo Selezionato */
-        function scrollToProtocol(elementId) {
-            const target = document.getElementById(elementId);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                target.style.borderColor = '#58a6ff';
+            } else if (sectionId === 'bentov-detail') {
+                document.getElementById('section-bentov-detail').classList.add('active-section');
+                document.getElementById('nav-ricerca').classList.add('active');
+                
+                // Inizializza la lente d'ingrandimento quando la sezione diventa visibile
                 setTimeout(() => {
-                    target.style.borderColor = '#223147';
-                }, 1500);
+                    initMagnifier("bentov-img", "magnifier-glass", 2.5);
+                }, 100);
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* Funzione Lente d'Ingrandimento (Magnifier) */
+        function initMagnifier(imgID, glassID, zoom) {
+            const img = document.getElementById(imgID);
+            const glass = document.getElementById(glassID);
+
+            glass.style.backgroundImage = "url('" + img.src + "')";
+            glass.style.backgroundRepeat = "no-repeat";
+            glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+
+            img.addEventListener("mousemove", moveMagnifier);
+            glass.addEventListener("mousemove", moveMagnifier);
+            
+            img.addEventListener("mouseenter", () => glass.style.display = "block");
+            img.addEventListener("mouseleave", () => glass.style.display = "none");
+
+            function moveMagnifier(e) {
+                e.preventDefault();
+                const pos = getCursorPos(e);
+                let x = pos.x;
+                let y = pos.y;
+
+                const w = glass.offsetWidth / 2;
+                const h = glass.offsetHeight / 2;
+
+                if (x > img.width - (w / zoom)) { x = img.width - (w / zoom); }
+                if (x < w / zoom) { x = w / zoom; }
+                if (y > img.height - (h / zoom)) { y = img.height - (h / zoom); }
+                if (y < h / zoom) { y = h / zoom; }
+
+                glass.style.left = (x - w) + "px";
+                glass.style.top = (y - h) + "px";
+                glass.style.backgroundPosition = "-" + ((x * zoom) - w) + "px -" + ((y * zoom) - h) + "px";
+            }
+
+            function getCursorPos(e) {
+                const a = img.getBoundingClientRect();
+                const x = e.pageX - a.left - window.scrollX;
+                const y = e.pageY - a.top - window.scrollY;
+                return { x: x, y: y };
             }
         }
 
-        /* Funzioni Modal Ingrandimento Immagini */
+        /* Modal Lightbox */
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('imgModalTarget');
