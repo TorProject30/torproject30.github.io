@@ -26,7 +26,7 @@
             line-height: 1.7;
         }
 
-        /* Header Centrato con Logo Ingrandito affiancato al Titolo */
+        /* Header Centrato con Scritta e Cornice al centro perfetto */
         header {
             background-color: var(--panel-color);
             border-bottom: 2px solid var(--border-color);
@@ -35,19 +35,27 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
 
-        /* Blocco centrale: Logo + Scritta */
-        .brand-header-inline {
+        /* Contenitore Titolo + Logo */
+        .brand-header-container {
+            position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
         }
 
-        .brand-header-inline svg {
-            width: 76px; /* Ingrandito quasi il doppio */
-            height: 76px;
+        /* Logo posizionato a sinistra della scritta centrata */
+        .header-logo-svg {
+            position: absolute;
+            right: 100%;
+            margin-right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 85px; /* Leggermente più grande */
+            height: 85px;
             display: block;
             filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.35));
         }
@@ -60,6 +68,7 @@
             text-transform: uppercase;
             margin: 0;
             line-height: 1;
+            text-align: center;
         }
 
         .logo span {
@@ -72,6 +81,7 @@
             letter-spacing: 8px;
             margin: 12px 0 15px 0;
             opacity: 0.7;
+            text-align: center;
         }
 
         nav {
@@ -474,8 +484,8 @@
 <body>
 
     <header>
-        <div class="brand-header-inline">
-            <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+        <div class="brand-header-container">
+            <svg class="header-logo-svg" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="55" cy="55" r="47" fill="none" stroke="#58a6ff" stroke-width="2.5" />
                 <line x1="50" y1="28" x2="50" y2="82" stroke="#223147" stroke-width="2" />
                 <line x1="60" y1="28" x2="60" y2="82" stroke="#223147" stroke-width="2" />
@@ -489,10 +499,10 @@
                 <circle cx="84" cy="46" r="4.5" fill="#121824" stroke="#58a6ff" stroke-width="1.8" />
                 <circle cx="84" cy="46" r="7.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="1.5,1.5" />
             </svg>
-            <div class="logo">Tor<span>Project</span></div>
-        </div>
 
-        <div class="symbol-separator">━━━━ ❖ ━━━━</div>
+            <div class="logo">Tor<span>Project</span></div>
+            <div class="symbol-separator">━━━━ ❖ ━━━━</div>
+        </div>
         
         <nav>
             <a id="nav-home" onclick="showSection('home')" class="active">❖ Home</a>
