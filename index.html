@@ -658,6 +658,18 @@
                 </div>
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
+
+            <div class="card">
+                <div class="card-meta"><span>📐</span> Schema 3 - Modello Vibrazionale</div>
+                <h3>Schema Coscienza Assoluto</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-3" class="img-magnifier-glass"></div>
+                    <img id="bentov-img-3" src="immagini/Schema%20Coscienza%20Assoluto.png" alt="Schema Coscienza Assoluto" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
         </div>
 
         <div id="section-contatti" class="page-section">
@@ -753,10 +765,11 @@
                 document.getElementById('section-bentov-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
                 
-                // Inizializza la lente d'ingrandimento per ENTRAMBE le immagini
+                // Inizializza la lente d'ingrandimento per TUTTE E TRE le immagini
                 setTimeout(() => {
                     initMagnifier("bentov-img-1", "magnifier-glass-1", 2.5);
                     initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
+                    initMagnifier("bentov-img-3", "magnifier-glass-3", 2.5);
                 }, 100);
             }
 
@@ -770,10 +783,11 @@
 
             if (!img || !glass) return;
 
+            // Configurazione dinamica iniziale dello sfondo della lente
             glass.style.backgroundImage = "url('" + img.src + "')";
             glass.style.backgroundRepeat = "no-repeat";
-            glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
 
+            // Gestione eventi per lo spostamento del cursore
             img.onmousemove = moveMagnifier;
             glass.onmousemove = moveMagnifier;
             
@@ -782,7 +796,9 @@
                 glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
                 glass.style.display = "block";
             };
-            img.onmouseleave = () => glass.style.display = "none";
+            img.onmouseleave = () => {
+                glass.style.display = "none";
+            };
 
             function moveMagnifier(e) {
                 e.preventDefault();
@@ -790,38 +806,58 @@
                 let x = pos.x;
                 let y = pos.y;
 
-                const w = glass.offsetWidth / 2;
-                const h = glass.offsetHeight / 2;
+                // Evita che la lente d'ingrandimento esca dai bordi dell'immagine
+                if (x > img.width - (glass.offsetWidth / (zoom * 2))) {
+                    x = img.width - (glass.offsetWidth / (zoom * 2));
+                }
+                if (x < glass.offsetWidth / (zoom * 2)) {
+                    x = glass.offsetWidth / (zoom * 2);
+                }
+                if (y > img.height - (glass.offsetHeight / (zoom * 2))) {
+                    y = img.height - (glass.offsetHeight / (zoom * 2));
+                }
+                if (y < glass.offsetHeight / (zoom * 2)) {
+                    y = glass.offsetHeight / (zoom * 2);
+                }
 
-                if (x > img.width - (w / zoom)) { x = img.width - (w / zoom); }
-                if (x < w / zoom) { x = w / zoom; }
-                if (y > img.height - (h / zoom)) { y = img.height - (h / zoom); }
-                if (y < h / zoom) { y = h / zoom; }
+                // Posiziona il cerchio della lente centrato sul cursore
+                glass.style.left = (x - (glass.offsetWidth / 2)) + "px";
+                glass.style.top = (y - (glass.offsetHeight / 2)) + "px";
 
-                glass.style.left = (x - w) + "px";
-                glass.style.top = (y - h) + "px";
-                glass.style.backgroundPosition = "-" + ((x * zoom) - w) + "px -" + ((y * zoom) - h) + "px";
+                // Calcola lo spostamento dello sfondo interno alla lente (effetto zoom)
+                glass.style.backgroundPosition = "-" + ((x * zoom) - (glass.offsetWidth / 2)) + "px -" + ((y * zoom) - (glass.offsetHeight / 2)) + "px";
             }
 
             function getCursorPos(e) {
+                e = e || window.event;
                 const a = img.getBoundingClientRect();
-                const x = e.pageX - a.left - window.scrollX;
-                const y = e.pageY - a.top - window.scrollY;
+                // Calcola la posizione X e Y relativa all'immagine tenendo conto dello scroll della pagina
+                const x = e.clientX - a.left;
+                const y = e.clientY - a.top;
                 return { x: x, y: y };
             }
         }
 
-        /* Modal Lightbox */
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('imgModalTarget');
-            modal.style.display = 'flex';
-            modalImg.src = imageSrc;
+        /* Funzioni di Gestione Finestra Modale (Zoom Fullscreen) */
+        function openModal(src) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("imgModalTarget");
+            modal.style.display = "flex";
+            modalImg.src = src;
         }
 
         function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
         }
+
+        // Chiusura del Fullscreen premendo il tasto "Esc" sulla tastiera
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
+
 </body>
 </html>
