@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TorusProject - Ricerca, Frequenze e Coscienza Oggettiva</title>
+    <!-- Inclusione di Leaflet CSS per la visualizzazione delle mappe KML interattive -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         /* Design Avanzato, Geometrico e Rigoroso */
         :root {
@@ -114,7 +116,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -306,7 +308,7 @@
             color: var(--accent-color);
         }
 
-        /* Tabella Ricerca */
+        /* Tabella Ricerca e Mappe */
         .research-table {
             width: 100%;
             border-collapse: collapse;
@@ -398,6 +400,44 @@
         }
 
         .btn-back:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Contenitore Mappa Interattiva KML Viewer */
+        #map-view-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+            background-color: var(--bg-color);
+            z-index: 1;
+        }
+
+        .map-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-action {
+            background-color: var(--accent-dim);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-action:hover {
             background-color: var(--accent-color);
             color: var(--bg-color);
         }
@@ -505,15 +545,16 @@
         </div>
         
         <nav>
-            <a id="nav-home" onclick="showSection('home')" class="active">❖ Home</a>
+            <a id="nav-home" onclick="showSection('home')">❖ Home</a>
             <a id="nav-ricerca" onclick="showSection('ricerca')">⚚ Linee di Ricerca</a>
-            <a href="#">🌐 Mappe Earth</a>
+            <a id="nav-mappe" onclick="showSection('mappe')">🌐 Mappe Earth</a>
             <a id="nav-contatti" onclick="showSection('contatti')">✉ Contatti</a>
         </nav>
     </header>
 
     <div class="container">
         
+        <!-- SEZIONE HOME -->
         <div id="section-home" class="page-section active-section">
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
@@ -547,6 +588,7 @@
             </div>
         </div>
 
+        <!-- SEZIONE LINEE DI RICERCA -->
         <div id="section-ricerca" class="page-section">
             <div class="hero">
                 <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
@@ -626,6 +668,7 @@
             </div>
         </div>
 
+        <!-- SCHEDA DI APPROFONDIMENTO BENTOV -->
         <div id="section-bentov-detail" class="page-section">
             <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
             
@@ -672,6 +715,59 @@
             </div>
         </div>
 
+        <!-- SEZIONE MAPPE EARTH -->
+        <div id="section-mappe" class="page-section">
+            <div class="hero">
+                <h1>Mappe Earth &bull; Archivio KML Territoriale</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Database cartografico centralizzato per l'osservazione tridimensionale, la triangolazione dei nodi di flusso planetari e l'analisi geometrica del terreno.</p>
+                <div class="status-bar"><div class="status-dot"></div>Sistema Satellitare &bull; Viewer KML Attivo</div>
+            </div>
+
+            <h2 class="section-title">Elenco Ricerche Territoriali (Database KML)</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Clicca su una ricerca nella tabella per visionare direttamente il file KML nella mappa interattiva sottostante o scaricarlo.</p>
+            
+            <table class="research-table">
+                <thead>
+                    <tr>
+                        <th>Codice Mappa</th>
+                        <th>Nome / Area di Studio</th>
+                        <th>Rilevazione / Coordinate</th>
+                        <th>Opzioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable-row" onclick="loadKmlViewer('Linea di San Michele', 'kml/Linea%20di%20San%20Michele.kml')">
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAP-01 🔗</td>
+                        <td style="color: var(--accent-color); font-weight: bold;">Linea di San Michele (Allineamento) ➔</td>
+                        <td>Territorio Globale</td>
+                        <td><span class="badge active">Visualizza & Scarica</span></td>
+                    </tr>
+                    <tr class="clickable-row" onclick="loadKmlViewer('Mappatura Nodo Principale - Canarie', 'kml/canarie_nodi.kml')">
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAP-02 🔗</td>
+                        <td style="color: var(--accent-color); font-weight: bold;">Anomalie e Nodi Energetici (Gran Canaria) ➔</td>
+                        <td>Gran Canaria / Atlantico</td>
+                        <td><span class="badge active">Visualizza & Scarica</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- VISUALIZZATORE KML INTERATTIVO -->
+            <div id="viewer-container" class="card" style="display: none; margin-top: 40px;">
+                <div class="card-meta"><span id="viewer-meta-icon">🌐</span> <span id="viewer-title-label">Viewer Mappa KML</span></div>
+                <h3 id="viewer-title">Seleziona una mappa</h3>
+                <p>Anteprima visiva interattiva del file KML direttamente nel browser.</p>
+                
+                <div id="map-view-container"></div>
+
+                <div class="map-actions">
+                    <a id="btn-download-kml" href="#" class="btn-action" download>📥 Scarica File KML Originale</a>
+                    <button class="btn-action" onclick="closeViewer()" style="background-color: var(--border-color); color: #fff;">✖ Chiudi Viewer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEZIONE CONTATTI -->
         <div id="section-contatti" class="page-section">
             <div class="hero">
                 <h1>Canali di Interazione e Inoltro Dati</h1>
@@ -733,6 +829,7 @@
 
     </div>
 
+    <!-- Modale Zoom Immagini -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="imgModalTarget">
@@ -742,6 +839,10 @@
         <div class="footer-symbols">🜁 🜂 🜃 🜄</div>
         <p>&copy; 2026 TorusProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
+
+    <!-- Inclusione Leaflet JS e plugin Leaflet-Omnivore per leggere direttamente i file KML -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
         function showSection(sectionId) {
@@ -758,6 +859,9 @@
             } else if (sectionId === 'ricerca') {
                 document.getElementById('section-ricerca').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
+            } else if (sectionId === 'mappe') {
+                document.getElementById('section-mappe').classList.add('active-section');
+                document.getElementById('nav-mappe').classList.add('active');
             } else if (sectionId === 'contatti') {
                 document.getElementById('section-contatti').classList.add('active-section');
                 document.getElementById('nav-contatti').classList.add('active');
@@ -765,7 +869,7 @@
                 document.getElementById('section-bentov-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
                 
-                // Inizializza la lente d'ingrandimento per TUTTE E TRE le immagini
+                // Inizializza la lente d'ingrandimento per le immagini Bentov
                 setTimeout(() => {
                     initMagnifier("bentov-img-1", "magnifier-glass-1", 2.5);
                     initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
@@ -776,6 +880,50 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        let mapInstance = null;
+
+        // Funzione per caricare e visualizzare il file KML nel browser
+        function loadKmlViewer(title, kmlUrl) {
+            const container = document.getElementById('viewer-container');
+            container.style.display = 'block';
+            document.getElementById('viewer-title').innerText = title;
+            document.getElementById('btn-download-kml').href = kmlUrl;
+
+            // Scorre la pagina fluidamente verso il viewer
+            container.scrollIntoView({ behavior: 'smooth' });
+
+            // Inizializza la mappa Leaflet se non è già attiva
+            if (!mapInstance) {
+                mapInstance = L.map('map-view-container').setView([41.9028, 12.4964], 6); // Coordinate centrali (Italia/Europa)
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    attribution: '&copy; TorusProject & OpenStreetMap contributors',
+                    maxZoom: 19
+                }).addTo(mapInstance);
+            } else {
+                mapInstance.invalidateSize();
+            }
+
+            // Rimuove layer vettoriali precedenti se presenti
+            mapInstance.eachLayer(function (layer) {
+                if (layer instanceof L.GeoJSON) {
+                    mapInstance.removeLayer(layer);
+                }
+            });
+
+            // Carica e interpreta il file KML tramite omnivore
+            omnivore.kml(kmlUrl)
+                .on('ready', function(e) {
+                    if (e.target.getLayers().length > 0) {
+                        mapInstance.fitBounds(e.target.getBounds());
+                    }
+                })
+                .addTo(mapInstance);
+        }
+
+        function closeViewer() {
+            document.getElementById('viewer-container').style.display = 'none';
+        }
+
         /* Funzione Lente d'Ingrandimento Generale */
         function initMagnifier(imgID, glassID, zoom) {
             const img = document.getElementById(imgID);
@@ -783,11 +931,9 @@
 
             if (!img || !glass) return;
 
-            // Configurazione dinamica iniziale dello sfondo della lente
             glass.style.backgroundImage = "url('" + img.src + "')";
             glass.style.backgroundRepeat = "no-repeat";
 
-            // Gestione eventi per lo spostamento del cursore
             img.onmousemove = moveMagnifier;
             glass.onmousemove = moveMagnifier;
             
@@ -806,7 +952,6 @@
                 let x = pos.x;
                 let y = pos.y;
 
-                // Evita che la lente d'ingrandimento esca dai bordi dell'immagine
                 if (x > img.width - (glass.offsetWidth / (zoom * 2))) {
                     x = img.width - (glass.offsetWidth / (zoom * 2));
                 }
@@ -820,25 +965,21 @@
                     y = glass.offsetHeight / (zoom * 2);
                 }
 
-                // Posiziona il cerchio della lente centrato sul cursore
                 glass.style.left = (x - (glass.offsetWidth / 2)) + "px";
                 glass.style.top = (y - (glass.offsetHeight / 2)) + "px";
-
-                // Calcola lo spostamento dello sfondo interno alla lente (effetto zoom)
                 glass.style.backgroundPosition = "-" + ((x * zoom) - (glass.offsetWidth / 2)) + "px -" + ((y * zoom) - (glass.offsetHeight / 2)) + "px";
             }
 
             function getCursorPos(e) {
                 e = e || window.event;
                 const a = img.getBoundingClientRect();
-                // Calcola la posizione X e Y relativa all'immagine tenendo conto dello scroll della pagina
                 const x = e.clientX - a.left;
                 const y = e.clientY - a.top;
                 return { x: x, y: y };
             }
         }
 
-        /* Funzioni di Gestione Finestra Modale (Zoom Fullscreen) */
+        /* Funzioni di Gestione Finestra Modale (Zoom Fullscreen Immagini) */
         function openModal(src) {
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("imgModalTarget");
@@ -855,6 +996,7 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
+                closeViewer();
             }
         });
     </script>
