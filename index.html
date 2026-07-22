@@ -781,6 +781,18 @@
                 </div>
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
+
+            <div class="card">
+                <div class="card-meta"><span>📊</span> Schema 4 - Analisi Parametrica</div>
+                <h3>Poster Quantità e Qualità di Coscienza</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-4" class="img-magnifier-glass"></div>
+                    <img id="bentov-img-4" src="immagini/Poster%20Quantit%C3%A0%20e%20Qualit%C3%A0%20di%20Coscienza.png" alt="Poster Quantità e Qualità di Coscienza" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
         </div>
 
         <!-- SCHEDA DI APPROFONDIMENTO GUR-07M (MECCANICA DELLE OTTAVE) -->
@@ -1067,6 +1079,7 @@
                     initMagnifier("bentov-img-1", "magnifier-glass-1", 2.5);
                     initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
                     initMagnifier("bentov-img-3", "magnifier-glass-3", 2.5);
+                    initMagnifier("bentov-img-4", "magnifier-glass-4", 2.5);
                 }, 100);
             } else if (sectionId === 'gur-detail') {
                 document.getElementById('section-gur-detail').classList.add('active-section');
