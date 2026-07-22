@@ -579,10 +579,11 @@
                     <h3>Trattato Armonia Precezionale del Sistema Solare</h3>
                     <p>Studio acustico-matematico sulle risonanze orbitali scalate in frequenze udibili. Indagine sull'influenza del Grande Anno Platonico (25.920 anni) e del respiro magnetico solare (ciclo undecennale) applicati come modello di armonizzazione per la macchina biologica.</p>
                 </div>
-                <div class="card">
+                <div class="card" onclick="openAnomaliesMap()" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
                     <h3>Sistemi di Coordinate e Punti di Interesse</h3>
                     <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire Anomalie e Nodi Energetici</p>
                 </div>
                 <div class="card" onclick="showSection('gur-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
@@ -1013,6 +1014,12 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Funzione rapida per aprire direttamente le Anomalie e Nodi Energetici dalla Home
+        function openAnomaliesMap() {
+            showSection('mappe');
+            loadKmlViewer('Anomalie e Nodi Energetici Geomorfologici', 'kml/Anomalie%20e%20Nodi%20Energetici%20Geomorfologici.kml');
         }
 
         let mapInstance = null;
