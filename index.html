@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TorusProject - Ricerca, Frequenze e Coscienza Oggettiva</title>
     
-    <!-- Favicon con sfondo pieno coordinato al tema del sito per massima visibilità -->
+    <!-- Favicon con sfondo pieno coordinato al tema del sito -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 110 110' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='55' cy='55' r='53' fill='%23121824' stroke='%23223147' stroke-width='2' /%3E%3Ccircle cx='55' cy='55' r='47' fill='none' stroke='%2358a6ff' stroke-width='2.5' /%3E%3Cline x1='50' y1='28' x2='50' y2='82' stroke='%23223147' stroke-width='2' /%3E%3Cline x1='60' y1='28' x2='60' y2='82' stroke='%23223147' stroke-width='2' /%3E%3Cpath d='M 55,28 C 44,33 66,37 55,42 C 44,47 66,51 55,56 C 44,61 66,65 55,70 C 44,75 66,79 55,82' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' /%3E%3Ccircle cx='55' cy='23' r='5.5' fill='%23ffffff' /%3E%3Ccircle cx='55' cy='23' r='9' fill='none' stroke='%2358a6ff' stroke-width='1.2' stroke-dasharray='2,1.5' /%3E%3Ccircle cx='55' cy='87' r='5.5' fill='%23ffffff' /%3E%3Ccircle cx='55' cy='87' r='9' fill='none' stroke='%2358a6ff' stroke-width='1.2' stroke-dasharray='2,1.5' /%3E%3Ccircle cx='26' cy='46' r='4.5' fill='%23121824' stroke='%2358a6ff' stroke-width='1.8' /%3E%3Ccircle cx='26' cy='46' r='7.5' fill='none' stroke='%23ffffff' stroke-width='1' stroke-dasharray='1.5,1.5' /%3E%3Ccircle cx='84' cy='46' r='4.5' fill='%23121824' stroke='%2358a6ff' stroke-width='1.8' /%3E%3Ccircle cx='84' cy='46' r='7.5' fill='none' stroke='%23ffffff' stroke-width='1' stroke-dasharray='1.5,1.5' /%3E%3C/svg%3E">
 
-    <!-- Inclusione di Leaflet CSS per la visualizzazione delle mappe KML interattive -->
+    <!-- Leaflet CSS per mappe interattive KML -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Design Avanzato, Geometrico e Rigoroso */
         :root {
             --bg-color: #0b0f17;
             --panel-color: #121824;
@@ -32,7 +31,6 @@
             line-height: 1.7;
         }
 
-        /* Header Centrato con Scritta e Cornice al centro perfetto */
         header {
             background-color: var(--panel-color);
             border-bottom: 2px solid var(--border-color);
@@ -44,7 +42,6 @@
             position: relative;
         }
 
-        /* Contenitore Titolo + Logo */
         .brand-header-container {
             position: relative;
             display: flex;
@@ -53,7 +50,6 @@
             justify-content: center;
         }
 
-        /* Logo posizionato a sinistra della scritta centrata (60px) */
         .header-logo-svg {
             position: absolute;
             right: 100%;
@@ -110,7 +106,6 @@
             color: var(--accent-color);
         }
 
-        /* Gestione Visibilità Sezioni Dinamiche */
         .page-section {
             display: none;
         }
@@ -235,7 +230,6 @@
             font-size: 15px;
         }
 
-        /* Stile Immagini e Lenti d'Ingrandimento (Magnifier) */
         .img-magnifier-container {
             position: relative;
             display: inline-block;
@@ -274,7 +268,6 @@
             font-style: italic;
         }
 
-        /* Modal / Fullscreen Lightbox */
         .modal {
             display: none;
             position: fixed;
@@ -312,7 +305,6 @@
             color: var(--accent-color);
         }
 
-        /* Tabella Ricerca e Mappe */
         .research-table {
             width: 100%;
             border-collapse: collapse;
@@ -408,7 +400,6 @@
             color: var(--bg-color);
         }
 
-        /* Contenitore Mappa Interattiva KML Viewer */
         #map-view-container {
             width: 100%;
             height: 450px;
@@ -446,7 +437,6 @@
             color: var(--bg-color);
         }
 
-        /* Layout Contatti */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -497,7 +487,6 @@
             font-family: inherit;
         }
 
-        /* Stile personalizzato box allegati con Drag & Drop e anteprima */
         .file-drop-area {
             border: 2px dashed var(--border-color);
             background-color: var(--bg-color);
@@ -1046,7 +1035,7 @@
         <p>&copy; 2026 TorusProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
-    <!-- Inclusione Leaflet JS e plugin Leaflet-Omnivore per leggere direttamente i file KML -->
+    <!-- Leaflet JS e plugin Leaflet-Omnivore -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
