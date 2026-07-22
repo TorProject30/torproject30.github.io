@@ -497,6 +497,58 @@
             font-family: inherit;
         }
 
+        /* Stile personalizzato box allegati con anteprima */
+        .file-drop-area {
+            border: 2px dashed var(--border-color);
+            background-color: var(--bg-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .file-drop-area:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(88, 166, 255, 0.05);
+        }
+
+        #file-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        #file-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        #file-list li button {
+            background: #da3633;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 4px 10px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #file-list li button:hover {
+            background: #f85149;
+        }
+
         .btn-submit {
             background-color: var(--accent-dim);
             color: var(--accent-color);
@@ -907,12 +959,12 @@
                     <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, ti preghiamo di attenerti ai criteri di osservazione oggettiva e accuratezza dei dati.</p>
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">
                         ✔ Comunicazione protetta tramite modulo riservato.<br>
-                        ✔ Puoi allegare più immagini, documenti o file in contemporanea.<br>
+                        ✔ Puoi selezionare più file o immagini in momenti diversi: verranno accumulati in lista con anteprima.<br>
                         ✔ I contributi validati verranno integrati nelle schede operative.
                     </p>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formsubmit.co/orione30@protonmail.com" method="POST" enctype="multipart/form-data">
+                    <form id="uploadForm" action="https://formsubmit.co/orione30@protonmail.com" method="POST" enctype="multipart/form-data">
                         
                         <input type="hidden" name="_subject" value="[TorusProject] Nuovo Contributo Riservato">
                         <input type="hidden" name="_template" value="table">
@@ -941,9 +993,14 @@
                             <textarea id="message" name="Dati_e_Note" class="form-control" rows="4" placeholder="Inserisci qui i dati, le coordinate o la descrizione..." required></textarea>
                         </div>
 
+                        <!-- Gestione File Multipli con Anteprima e Accumulo Dinamico -->
                         <div class="form-group">
-                            <label for="attachment">📎 Allega File / Immagini (Senza limiti - Selezione Multipla)</label>
-                            <input type="file" id="attachment" name="attachment" class="form-control" multiple accept="image/*,.pdf,.zip,.txt,.kml,.kmz">
+                            <label>📎 Allega File / Immagini (Senza limiti con anteprima)</label>
+                            <div class="file-drop-area" onclick="document.getElementById('attachment').click();">
+                                <span style="color: var(--accent-color); font-weight: bold; font-size: 13px;">📁 Clicca qui per selezionare file (puoi aggiungerne altri in seguito)</span>
+                                <input type="file" id="attachment" name="attachment" style="display: none;" multiple accept="image/*,.pdf,.zip,.txt,.kml,.kmz">
+                            </div>
+                            <ul id="file-list"></ul>
                         </div>
 
                         <button type="submit" class="btn-submit">🚀 Invia al Centro Ricerche</button>
@@ -994,7 +1051,6 @@
                 document.getElementById('section-bentov-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
                 
-                // Inizializza la lente d'ingrandimento per le immagini Bentov
                 setTimeout(() => {
                     initMagnifier("bentov-img-1", "magnifier-glass-1", 2.5);
                     initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
@@ -1004,7 +1060,6 @@
                 document.getElementById('section-gur-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
                 
-                // Inizializza le lenti d'ingrandimento per tutte le immagini della sezione GUR-07M
                 setTimeout(() => {
                     initMagnifier("gur-img-1", "magnifier-glass-gur-1", 2.5);
                     initMagnifier("gur-img-2", "magnifier-glass-gur-2", 2.5);
@@ -1019,7 +1074,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Funzione rapida per aprire direttamente le Anomalie e Nodi Energetici dalla Home
         function openAnomaliesMap() {
             showSection('mappe');
             loadKmlViewer('Anomalie e Nodi Energetici Geomorfologici', 'kml/Anomalie%20e%20Nodi%20Energetici%20Geomorfologici.kml');
@@ -1027,7 +1081,6 @@
 
         let mapInstance = null;
 
-        // Funzione per caricare e visualizzare il file KML nel browser
         function loadKmlViewer(title, kmlUrl) {
             const container = document.getElementById('viewer-container');
             container.style.display = 'block';
@@ -1064,6 +1117,46 @@
         function closeViewer() {
             document.getElementById('viewer-container').style.display = 'none';
         }
+
+        /* Gestione Avanzata File Multipli con Anteprima e Accumulo Dinamico */
+        let dt = new DataTransfer();
+        const fileInput = document.getElementById('attachment');
+        const fileListContainer = document.getElementById('file-list');
+        const uploadForm = document.getElementById('uploadForm');
+
+        fileInput.addEventListener('change', function(e) {
+            for (let i = 0; i < fileInput.files.length; i++) {
+                dt.items.add(fileInput.files[i]);
+            }
+            fileInput.files = dt.files;
+            renderFileList();
+        });
+
+        function renderFileList() {
+            fileListContainer.innerHTML = '';
+            for (let i = 0; i < dt.files.length; i++) {
+                let li = document.createElement('li');
+                li.textContent = dt.files[i].name;
+
+                let removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Rimuovi';
+                removeBtn.type = 'button';
+                removeBtn.onclick = (function(index) {
+                    return function() {
+                        dt.items.remove(index);
+                        fileInput.files = dt.files;
+                        renderFileList();
+                    };
+                })(i);
+
+                li.appendChild(removeBtn);
+                fileListContainer.appendChild(li);
+            }
+        }
+
+        uploadForm.addEventListener('submit', function(e) {
+            fileInput.files = dt.files;
+        });
 
         /* Funzione Lente d'Ingrandimento Generale */
         function initMagnifier(imgID, glassID, zoom) {
