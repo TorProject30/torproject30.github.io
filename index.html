@@ -584,10 +584,11 @@
                     <h3>Sistemi di Coordinate e Punti di Interesse</h3>
                     <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
                 </div>
-                <div class="card">
+                <div class="card" onclick="showSection('gur-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
                     <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
-                    <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro" di George Gurdjieff. Analisi dei processi di transizione energetica necessari per il superamento dello stato di sonno psicologico.</p>
+                    <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro". Analisi dei processi di transizione energetica e della meccanica delle ottave.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda GUR-07M</p>
                 </div>
             </div>
         </div>
@@ -639,14 +640,14 @@
                         </td>
                         <td><span class="badge progressing">Seleziona Mappa</span></td>
                     </tr>
-                    <tr>
-                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M</td>
-                        <td>Meccanica delle Ottave</td>
+                    <tr class="clickable-row" onclick="showSection('gur-detail')">
+                        <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M 🔗</td>
+                        <td style="color: var(--accent-color); font-weight: bold;">Meccanica delle Ottave ➔</td>
                         <td>Asse Meccanico</td>
                         <td>
                             <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 90%;"></div></div> 90%
                         </td>
-                        <td><span class="badge active">Stabile</span></td>
+                        <td><span class="badge active">Schede & PDF</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -656,24 +657,25 @@
                 <div class="card" onclick="showSection('bentov-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
                     <h3>Mappatura Onde Bentov</h3>
-                    <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici, basandosi sulla geometria toroidale dell'interazione biologica.</p>
-                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata con le mappe interattive</p>
+                    <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata</p>
                 </div>
                 <div class="card">
                     <div class="card-meta"><span>🪐</span> Protocollo Operativo PRC-25K</div>
                     <h3>Armonia Precezionale del Sistema Solare</h3>
-                    <p>Elaborazione e sintesi informatica (su base Python) delle orbite del sistema solare. Il protocollo mappa 1 anno terrestre su 1 secondo di riproduzione audio, calcolando l'impatto sonoro dell'intero ciclo di precessione degli equinozi (25.920 anni) intrecciato alla pulsazione ritmica magnetica del Sole (ciclo di 11 anni).</p>
+                    <p>Elaborazione e sintesi informatica (su base Python) delle orbite del sistema solare e cicli precezionali.</p>
                 </div>
                 <div class="card" onclick="showSection('mappe')" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Protocollo Operativo MAT-03B</div>
                     <h3>Triangolazione Nodi Terreno</h3>
-                    <p>Mappatura e analisi geometrica delle anomalie energetiche rilevate sul campo. Clicca per accedere all'archivio e scegliere quale mappa visualizzare o scaricare.</p>
+                    <p>Mappatura e analisi geometrica delle anomalie energetiche rilevate sul campo.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire l'archivio Mappe Earth</p>
                 </div>
-                <div class="card">
+                <div class="card" onclick="showSection('gur-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
-                    <h3>Isolamento della Macchina Biologica</h3>
-                    <p>Sviluppo di processi analitici di scomposizione delle reazioni automatiche. L'obiettivo consiste nel mappare le deviazioni causate dagli intervalli naturali lungo le ottave discendenti.</p>
+                    <h3>Meccanica delle Ottave e Isolamento Biologico</h3>
+                    <p>Sviluppo di processi analitici sulle ottave cosmiche, idrogeni e nutrizione della macchina biologica.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire le 8 tavole e scaricare i PDF</p>
                 </div>
             </div>
         </div>
@@ -723,6 +725,115 @@
                 </div>
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
+        </div>
+
+        <!-- SCHEDA DI APPROFONDIMENTO GUR-07M (MECCANICA DELLE OTTAVE) -->
+        <div id="section-gur-detail" class="page-section">
+            <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
+            
+            <div class="hero">
+                <h1>Meccanica delle Ottave e Leggi Cosmiche</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Protocollo Operativo GUR-07M &bull; Tavole Analitiche, Scala degli Idrogeni e Raggio di Creazione</p>
+            </div>
+
+            <!-- Tavola 1 -->
+            <div class="card" style="margin-top: 30px;">
+                <div class="card-meta"><span>⚙️</span> Tavola 01</div>
+                <h3>Ottava come Alimento</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-1" class="img-magnifier-glass"></div>
+                    <img id="gur-img-1" src="immagini/Ottava come alimento.png" alt="Ottava come alimento" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 2 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 02</div>
+                <h3>Scala Evoluzione Idrogeni</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-2" class="img-magnifier-glass"></div>
+                    <img id="gur-img-2" src="immagini/Scala evoluzione Hidrogeni.jpg" alt="Scala evoluzione Hidrogeni" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 3 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 03</div>
+                <h3>Scala degli Idrogeni</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-3" class="img-magnifier-glass"></div>
+                    <img id="gur-img-3" src="immagini/Scala degli hidrogeni.jpg" alt="Scala degli hidrogeni" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 4 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 04</div>
+                <h3>Raggio di Creazione</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-4" class="img-magnifier-glass"></div>
+                    <img id="gur-img-4" src="immagini/Raggio di Creazione.png" alt="Raggio di Creazione" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 5 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 05</div>
+                <h3>Atomo Linea Evoluzione</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-5" class="img-magnifier-glass"></div>
+                    <img id="gur-img-5" src="immagini/Atomo linea Evoluzione.jpeg" alt="Atomo linea Evoluzione" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 6 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 06</div>
+                <h3>Legge dell'Ottava</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-6" class="img-magnifier-glass"></div>
+                    <img id="gur-img-6" src="immagini/legge dell'ottava.jpg" alt="legge dell'ottava" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- Tavola 7 -->
+            <div class="card">
+                <div class="card-meta"><span>⚙️</span> Tavola 07</div>
+                <h3>Nutrimento Ottava</h3>
+                <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
+                <div class="img-magnifier-container">
+                    <div id="magnifier-glass-gur-7" class="img-magnifier-glass"></div>
+                    <img id="gur-img-7" src="immagini/Nutrimento Ottava.jpg" alt="Nutrimento Ottava" class="card-image" onclick="openModal(this.src)">
+                </div>
+                <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
+            </div>
+
+            <!-- SEZIONE DOCUMENTI PDF DA SCARICARE -->
+            <div class="card" style="border-color: var(--accent-color); margin-top: 50px;">
+                <div class="card-meta"><span>📥</span> Archivio Documentazione</div>
+                <h3>Download Documenti PDF - GUR-07M</h3>
+                <p style="margin-bottom: 20px;">Scarica il documento di approfondimento in formato PDF direttamente sul tuo dispositivo.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <a href="documenti/riassuntowalker.pdf" class="btn-action" download style="justify-content: center;">
+                        📥 Scarica Riassunto della Meccanica delle Ottave (PDF)
+                    </a>
+                </div>
+            </div>
+
         </div>
 
         <!-- SEZIONE MAPPE EARTH -->
@@ -885,6 +996,20 @@
                     initMagnifier("bentov-img-2", "magnifier-glass-2", 2.5);
                     initMagnifier("bentov-img-3", "magnifier-glass-3", 2.5);
                 }, 100);
+            } else if (sectionId === 'gur-detail') {
+                document.getElementById('section-gur-detail').classList.add('active-section');
+                document.getElementById('nav-ricerca').classList.add('active');
+                
+                // Inizializza le lenti d'ingrandimento per tutte le immagini della sezione GUR-07M
+                setTimeout(() => {
+                    initMagnifier("gur-img-1", "magnifier-glass-gur-1", 2.5);
+                    initMagnifier("gur-img-2", "magnifier-glass-gur-2", 2.5);
+                    initMagnifier("gur-img-3", "magnifier-glass-gur-3", 2.5);
+                    initMagnifier("gur-img-4", "magnifier-glass-gur-4", 2.5);
+                    initMagnifier("gur-img-5", "magnifier-glass-gur-5", 2.5);
+                    initMagnifier("gur-img-6", "magnifier-glass-gur-6", 2.5);
+                    initMagnifier("gur-img-7", "magnifier-glass-gur-7", 2.5);
+                }, 100);
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -899,12 +1024,10 @@
             document.getElementById('viewer-title').innerText = title;
             document.getElementById('btn-download-kml').href = kmlUrl;
 
-            // Scorre la pagina fluidamente verso il viewer
             container.scrollIntoView({ behavior: 'smooth' });
 
-            // Inizializza la mappa Leaflet se non è già attiva
             if (!mapInstance) {
-                mapInstance = L.map('map-view-container').setView([41.9028, 12.4964], 6); // Coordinate centrali (Italia/Europa)
+                mapInstance = L.map('map-view-container').setView([41.9028, 12.4964], 6);
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; TorusProject & OpenStreetMap contributors',
                     maxZoom: 19
@@ -913,14 +1036,12 @@
                 mapInstance.invalidateSize();
             }
 
-            // Rimuove layer vettoriali precedenti se presenti
             mapInstance.eachLayer(function (layer) {
                 if (layer instanceof L.GeoJSON) {
                     mapInstance.removeLayer(layer);
                 }
             });
 
-            // Carica e interpreta il file KML tramite omnivore
             omnivore.kml(kmlUrl)
                 .on('ready', function(e) {
                     if (e.target.getLayers().length > 0) {
@@ -1002,7 +1123,6 @@
             modal.style.display = "none";
         }
 
-        // Chiusura del Fullscreen premendo il tasto "Esc" sulla tastiera
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
