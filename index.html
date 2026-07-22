@@ -497,20 +497,20 @@
             font-family: inherit;
         }
 
-        /* Stile personalizzato box allegati con anteprima */
+        /* Stile personalizzato box allegati con Drag & Drop e anteprima */
         .file-drop-area {
             border: 2px dashed var(--border-color);
             background-color: var(--bg-color);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             border-radius: 4px;
             cursor: pointer;
             transition: border-color 0.2s, background 0.2s;
         }
 
-        .file-drop-area:hover {
+        .file-drop-area:hover, .file-drop-area.dragover {
             border-color: var(--accent-color);
-            background-color: rgba(88, 166, 255, 0.05);
+            background-color: rgba(88, 166, 255, 0.08);
         }
 
         #file-list {
@@ -959,7 +959,7 @@
                     <p>Al fine di ottimizzare l'elaborazione dei flussi informativi, ti preghiamo di attenerti ai criteri di osservazione oggettiva e accuratezza dei dati.</p>
                     <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">
                         ✔ Comunicazione protetta tramite modulo riservato.<br>
-                        ✔ Puoi selezionare più file o immagini in momenti diversi: verranno accumulati in lista con anteprima.<br>
+                        ✔ Puoi selezionare o **trascinare** più file/immagini nel box: verranno accumulati in lista con anteprima.<br>
                         ✔ I contributi validati verranno integrati nelle schede operative.
                     </p>
                 </div>
@@ -993,11 +993,11 @@
                             <textarea id="message" name="Dati_e_Note" class="form-control" rows="4" placeholder="Inserisci qui i dati, le coordinate o la descrizione..." required></textarea>
                         </div>
 
-                        <!-- Gestione File Multipli con Anteprima e Accumulo Dinamico -->
+                        <!-- Gestione File Multipli con Drag & Drop, Anteprima e Accumulo Dinamico -->
                         <div class="form-group">
-                            <label>📎 Allega File / Immagini (Senza limiti con anteprima)</label>
-                            <div class="file-drop-area" onclick="document.getElementById('attachment').click();">
-                                <span style="color: var(--accent-color); font-weight: bold; font-size: 13px;">📁 Clicca qui per selezionare file (puoi aggiungerne altri in seguito)</span>
+                            <label>📎 Allega File / Immagini (Trascina o Clicca)</label>
+                            <div id="drop-area" class="file-drop-area" onclick="document.getElementById('attachment').click();">
+                                <span style="color: var(--accent-color); font-weight: bold; font-size: 13px;">📁 Clicca qui o trascina i file direttamente in questo box</span>
                                 <input type="file" id="attachment" name="attachment" style="display: none;" multiple accept="image/*,.pdf,.zip,.txt,.kml,.kmz">
                             </div>
                             <ul id="file-list"></ul>
@@ -1118,20 +1118,50 @@
             document.getElementById('viewer-container').style.display = 'none';
         }
 
-        /* Gestione Avanzata File Multipli con Anteprima e Accumulo Dinamico */
+        /* Gestione Avanzata File Multipli con Drag & Drop, Anteprima e Accumulo */
         let dt = new DataTransfer();
         const fileInput = document.getElementById('attachment');
+        const dropArea = document.getElementById('drop-area');
         const fileListContainer = document.getElementById('file-list');
         const uploadForm = document.getElementById('uploadForm');
 
+        // Quando selezioni i file dal tasto Sfoglia
         fileInput.addEventListener('change', function(e) {
-            for (let i = 0; i < fileInput.files.length; i++) {
-                dt.items.add(fileInput.files[i]);
+            addFiles(fileInput.files);
+        });
+
+        // Eventi Drag & Drop sul box
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.remove('dragover');
+            }, false);
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            const droppedFiles = e.dataTransfer.files;
+            addFiles(droppedFiles);
+        }, false);
+
+        // Funzione comune per aggiungere i file alla lista cumulativa
+        function addFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                dt.items.add(files[i]);
             }
             fileInput.files = dt.files;
             renderFileList();
-        });
+        }
 
+        // Funzione per disegnare la lista a schermo e gestire le rimozioni singole
         function renderFileList() {
             fileListContainer.innerHTML = '';
             for (let i = 0; i < dt.files.length; i++) {
