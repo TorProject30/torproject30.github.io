@@ -42,7 +42,6 @@
             position: relative;
         }
 
-        /* CONTATORE VISITE REALI: POSIZIONATO E CENTRATO VERTICALMENTE CON LA SCRITTA/LOGO A SX */
         .header-counter-position {
             position: absolute;
             top: 50%;
@@ -825,7 +824,7 @@
 <body>
 
     <header>
-        <!-- CONTATORE VISITE REALI: PARTENZA DA 0 E INCREMENTALE -->
+        <!-- CONTATORE VISITE CON COOKIE ANTI-F5 -->
         <div class="header-counter-position">
             <div class="visite-totali-box">
                 <div class="visite-totali-header">Visite:</div>
@@ -1006,7 +1005,6 @@
                 <p>Protocollo Operativo PRC-25K &bull; Trattato Scientifico, Sintetizzatore Planetario e Generatore di Risonanze</p>
             </div>
 
-            <!-- SCHEDA 1: DOWNLOAD TRATTATO PDF -->
             <div class="card" style="margin-top: 30px; border-color: var(--accent-color);">
                 <div class="card-meta"><span>📄</span> Documento Ufficiale - PRC-25K</div>
                 <h3>Trattato Armonia Precessionale del Sistema Solare (PDF)</h3>
@@ -1022,7 +1020,6 @@
                 </div>
             </div>
 
-            <!-- SCHEDA 2: EQUALIZZATORE / SINTETIZZATORE ARMONICO -->
             <div class="card">
                 <div class="card-meta"><span>🎛️</span> Generatore Frequenziale Interattivo</div>
                 <h3>Sintetizzatore Armonico del Sistema Solare</h3>
@@ -1293,7 +1290,6 @@
                     <button class="btn-action" onclick="closeViewer()" style="background-color: var(--border-color); color: #fff;">✖ Chiudi Viewer</button>
                 </div>
 
-                <!-- SCHEDA INFORMAZIONI E GUIDA GOOGLE EARTH -->
                 <div class="kml-info-card">
                     <h3>💡 Consiglio per una visualizzazione ottimale</h3>
                     <p class="kml-intro">
@@ -1402,16 +1398,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
-        // GESTIONE CONTEGGIO VISITE (PARTENZA DA 0 E INCREMENTALE)
+        // FUNZIONI UTILI PER I COOKIE
+        function setCookie(name, value, hours) {
+            let expires = "";
+            if (hours) {
+                let date = new Date();
+                date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i=0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        // GESTIONE CONTEGGIO VISITE CON COOKIE ANTI-F5 (SCADENZA 24 ORE)
         function initVisitsCounter() {
             const container = document.getElementById('counter-digits');
             if (!container) return;
 
-            // Utilizziamo una nuova chiave nel localStorage per azzerare il vecchio contatore e partire da 0
             let visits = parseInt(localStorage.getItem('torus_visits_fresh') || '0', 10);
-            
-            visits += 1;
-            localStorage.setItem('torus_visits_fresh', visits);
+
+            // Se il cookie non esiste, incrementa la visita e imposta il cookie per 24 ore
+            if (!getCookie('torus_counted')) {
+                visits += 1;
+                localStorage.setItem('torus_visits_fresh', visits);
+                setCookie('torus_counted', 'true', 24);
+            }
 
             const countStr = String(visits).padStart(6, '0');
             container.innerHTML = '';
