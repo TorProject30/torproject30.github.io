@@ -824,7 +824,7 @@
 <body>
 
     <header>
-        <!-- CONTATORE VISITE CLOUD CONDIVISO + ANTI-F5 -->
+        <!-- CONTATORE VISITE CLOUD CONDIVISO -->
         <div class="header-counter-position">
             <div class="visite-totali-box">
                 <div class="visite-totali-header">Visite:</div>
@@ -1398,29 +1398,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
-        // GESTIONE UTILI PER I COOKIE
-        function setCookie(name, value, hours) {
-            let expires = "";
-            if (hours) {
-                let date = new Date();
-                date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        function getCookie(name) {
-            let nameEQ = name + "=";
-            let ca = document.cookie.split(';');
-            for(let i=0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-            }
-            return null;
-        }
-
-        // GESTIONE CONTEGGIO VISITE CLOUD (CONDIVISO TRA DISPOSITIVI) + ANTI-F5 24H
+        // GESTIONE CONTEGGIO VISITE CLOUD CONDIVISO (Incrementa a ogni accesso o F5 da qualsiasi dispositivo)
         async function initVisitsCounter() {
             const container = document.getElementById('counter-digits');
             if (!container) return;
@@ -1430,33 +1408,20 @@
             let visits = 3;
 
             try {
-                if (!getCookie('torus_counted')) {
-                    let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
-                    if (response.ok) {
-                        let data = await response.json();
-                        visits = data.count;
-                        setCookie('torus_counted', 'true', 24);
-                    } else {
-                        let resGet = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
-                        if (resGet.ok) {
-                            let dataGet = await resGet.json();
-                            visits = dataGet.count;
-                        }
-                    }
+                let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+                if (response.ok) {
+                    let data = await response.json();
+                    visits = data.count;
                 } else {
-                    let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
-                    if (response.ok) {
-                        let data = await response.json();
-                        visits = data.count;
+                    let resGet = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
+                    if (resGet.ok) {
+                        let dataGet = await resGet.json();
+                        visits = dataGet.count;
                     }
                 }
             } catch (error) {
-                visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10);
-                if (!getCookie('torus_counted')) {
-                    visits += 1;
-                    localStorage.setItem('torus_visits_fallback', visits);
-                    setCookie('torus_counted', 'true', 24);
-                }
+                visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10) + 1;
+                localStorage.setItem('torus_visits_fallback', visits);
             }
 
             const countStr = String(visits).padStart(6, '0');
