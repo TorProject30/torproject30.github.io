@@ -437,6 +437,83 @@
             color: var(--bg-color);
         }
 
+        /* --- SCHEDA INFO KML E GUIDA GOOGLE EARTH --- */
+        .kml-info-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            margin: 30px 0 10px 0;
+            color: var(--text-main);
+        }
+
+        .kml-info-card h3 {
+            margin-top: 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .kml-intro {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .kml-steps {
+            margin: 0 0 20px 0;
+            padding-left: 20px;
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+
+        .kml-steps li {
+            margin-bottom: 6px;
+        }
+
+        .kml-steps a {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .kml-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 20px 0;
+        }
+
+        .kml-note {
+            font-style: italic;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+        }
+
+        .contact-callout {
+            background-color: var(--accent-dim);
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 18px;
+            border-radius: 6px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .contact-callout a {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         /* STILI SINTETIZZATORE / EQUALIZZATORE ARMONICO */
         .synth-controls-global {
             background-color: var(--bg-color);
@@ -1146,6 +1223,31 @@
                 <div class="map-actions">
                     <a id="btn-download-kml" href="#" class="btn-action" download>📥 Scarica File KML Originale</a>
                     <button class="btn-action" onclick="closeViewer()" style="background-color: var(--border-color); color: #fff;">✖ Chiudi Viewer</button>
+                </div>
+
+                <!-- SCHEDA INFORMAZIONI E GUIDA GOOGLE EARTH -->
+                <div class="kml-info-card">
+                    <h3>💡 Consiglio per una visualizzazione ottimale</h3>
+                    <p class="kml-intro">
+                        Per un'esperienza di esplorazione più approfondita e tridimensionale, ti consigliamo di scaricare il file KML e visualizzarlo direttamente su <strong>Google Earth</strong>:
+                    </p>
+
+                    <ol class="kml-steps">
+                        <li>Clicca sul pulsante <strong>"SCARICA FILE KML ORIGINALE"</strong>.</li>
+                        <li>Apri <a href="https://earth.google.com/web/" target="_blank" rel="noopener">Google Earth Web</a> (o l'applicazione desktop / mobile).</li>
+                        <li>Dal menu laterale, seleziona <strong>Progetti</strong> &rarr; <strong>Apri</strong> &rarr; <strong>Importa file KML da computer</strong>.</li>
+                        <li>Esplora la mappa e analizza i singoli punti nel dettaglio.</li>
+                    </ol>
+
+                    <hr class="kml-divider">
+
+                    <p class="kml-note">
+                        Questo studio è frutto di passione, ricerca e costante evoluzione. Se noti imprecisioni, desideri proporre correzioni, suggerire nuove correlazioni o condividere materiale di approfondimento, ogni contributo è sinceramente benvenuto.
+                    </p>
+
+                    <div class="contact-callout">
+                        📩 <strong>Vuoi collaborare?</strong> Ti invitiamo ad andare nella sezione <a onclick="showSection('contatti')">Contatti</a> del sito: lì potrai inviarci un messaggio e caricare direttamente i tuoi file o articoli con tutti i dettagli.
+                    </div>
                 </div>
             </div>
         </div>
