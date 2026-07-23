@@ -108,6 +108,7 @@
 
         .page-section {
             display: none;
+            position: relative;
         }
 
         .page-section.active-section {
@@ -118,6 +119,55 @@
             max-width: 950px;
             margin: 40px auto;
             padding: 0 20px;
+        }
+
+        /* COMPATTO FLAG COUNTER IN ALTO A DESTRA */
+        .flag-counter-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--panel-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            transition: border-color 0.2s;
+        }
+
+        .flag-counter-badge:hover {
+            border-color: var(--accent-color);
+        }
+
+        .flag-counter-badge .badge-title {
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .flag-counter-badge img {
+            display: block;
+            max-width: 130px;
+            height: auto;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .flag-counter-badge {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 20px auto;
+                display: table;
+            }
         }
 
         .hero {
@@ -437,7 +487,6 @@
             color: var(--bg-color);
         }
 
-        /* --- SCHEDA INFO KML E GUIDA GOOGLE EARTH --- */
         .kml-info-card {
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
@@ -514,7 +563,6 @@
             cursor: pointer;
         }
 
-        /* STILI SINTETIZZATORE / EQUALIZZATORE ARMONICO */
         .synth-controls-global {
             background-color: var(--bg-color);
             padding: 20px;
@@ -639,7 +687,6 @@
             color: var(--text-muted);
         }
 
-        /* CONTATTI */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -804,6 +851,17 @@
         
         <!-- SEZIONE HOME -->
         <div id="section-home" class="page-section active-section">
+
+            <!-- RIQUADRINO COMPATTO FLAG COUNTER IN ALTO A DESTRA -->
+            <div class="flag-counter-badge">
+                <div class="badge-title">🌐 Accessi</div>
+                <a href="https://info.flagcounter.com/s0me" target="_blank" rel="noopener noreferrer">
+                    <img src="https://s11.flagcounter.com/count2/s0me/bg_121824/txt_DBDEC6/border_223147/columns_2/maxflags_6/viewers_0/labels_0/pageviews_1/flags_0/" 
+                         alt="Flag Counter" 
+                         border="0">
+                </a>
+            </div>
+
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
@@ -837,26 +895,6 @@
                     <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro". Analisi dei processi di transizione energetica e della meccanica delle ottave.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda GUR-07M</p>
                 </div>
-            </div>
-
-            <!-- RIQUADRO GRAFICO FLAG COUNTER -->
-            <h2 class="section-title">Rilevazione Accessi Globali</h2>
-            <div class="card" style="text-align: center; max-width: 480px; margin: 0 auto 25px auto;">
-                <div class="card-meta" style="justify-content: center;"><span>🌐</span> Connessioni Planetarie</div>
-                <h3 style="margin-bottom: 15px;">Visitatori dal Mondo</h3>
-                <div style="display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <!-- INIZIO FLAG COUNTER -->
-                    <a href="https://info.flagcounter.com/s0me" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
-                        <img src="https://s11.flagcounter.com/count2/s0me/bg_FFFFFF/txt_1E293B/border_FFFFFF/columns_2/maxflags_10/viewers_0/labels_1/pageviews_1/timeline_0/" 
-                             alt="Flag Counter" 
-                             border="0" 
-                             style="max-width: 100%; height: auto; display: block; border-radius: 4px;">
-                    </a>
-                    <!-- FINE FLAG COUNTER -->
-                </div>
-                <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; font-style: italic;">
-                    Monitoraggio in tempo reale dei nodi di connessione attivi
-                </p>
             </div>
         </div>
 
