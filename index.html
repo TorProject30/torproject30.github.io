@@ -824,7 +824,7 @@
 <body>
 
     <header>
-        <!-- CONTATORE VISITE CON COOKIE ANTI-F5 -->
+        <!-- CONTATORE VISITE CLOUD CONDIVISO + ANTI-F5 -->
         <div class="header-counter-position">
             <div class="visite-totali-box">
                 <div class="visite-totali-header">Visite:</div>
@@ -834,7 +834,7 @@
                     <div class="visite-totali-digit">0</div>
                     <div class="visite-totali-digit">0</div>
                     <div class="visite-totali-digit">0</div>
-                    <div class="visite-totali-digit">0</div>
+                    <div class="visite-totali-digit">3</div>
                 </div>
             </div>
         </div>
@@ -1420,18 +1420,31 @@
             return null;
         }
 
-        // GESTIONE CONTEGGIO VISITE CON COOKIE ANTI-F5 (SCADENZA 24 ORE)
-        function initVisitsCounter() {
+        // GESTIONE CONTEGGIO VISITE CLOUD (CONDIVISO TRA DISPOSITIVI) + ANTI-F5 24H
+        async function initVisitsCounter() {
             const container = document.getElementById('counter-digits');
             if (!container) return;
 
-            let visits = parseInt(localStorage.getItem('torus_visits_fresh') || '0', 10);
+            const namespace = "torusproject_site_uff";
+            const key = "visite_totali";
+            let visits = 3; // Valore minimo di partenza
 
-            // Se il cookie non esiste, incrementa la visita e imposta il cookie per 24 ore
-            if (!getCookie('torus_counted')) {
-                visits += 1;
-                localStorage.setItem('torus_visits_fresh', visits);
-                setCookie('torus_counted', 'true', 24);
+            try {
+                if (!getCookie('torus_counted')) {
+                    // Prima visita per questo browser nelle ultime 24h: incrementa sul server cloud
+                    let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+                    let data = await response.json();
+                    visits = data.count;
+                    setCookie('torus_counted', 'true', 24);
+                } else {
+                    // Visita già contata di recente: legge solo il valore attuale senza incrementare
+                    let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
+                    let data = await response.json();
+                    visits = data.count;
+                }
+            } catch (error) {
+                // Fallback di sicurezza se manca internet
+                visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10);
             }
 
             const countStr = String(visits).padStart(6, '0');
