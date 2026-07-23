@@ -115,7 +115,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -437,6 +437,132 @@
             color: var(--bg-color);
         }
 
+        /* STILI SINTETIZZATORE / EQUALIZZATORE ARMONICO */
+        .synth-controls-global {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .synth-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .synth-control-group label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .synth-control-group select, .synth-control-group input[type="range"] {
+            background: var(--panel-color);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .btn-synth-play {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-synth-play:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 12px var(--accent-color);
+        }
+
+        .btn-synth-play.stop {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        #visualizer {
+            width: 100%;
+            height: 120px;
+            background: #06090e;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        .planets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            width: 100%;
+        }
+
+        .planet-card {
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .planet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .planet-name {
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .planet-freq {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-family: monospace;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-container input[type="range"] {
+            flex-grow: 1;
+            accent-color: var(--accent-color);
+        }
+
+        .val-display {
+            width: 35px;
+            text-align: right;
+            font-size: 0.85rem;
+            font-family: monospace;
+            color: var(--text-muted);
+        }
+
+        /* CONTATTI */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -616,11 +742,11 @@
                     <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la Mappatura Onde Bentov</p>
                 </div>
-                <div class="card" onclick="window.open('documenti/TRATTATO%20ARMONIA%20PRECEZIONALE%20DEL%20SISTEMA%20SOLARE.pdf', '_blank')" style="cursor: pointer;">
+                <div class="card" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🪐</span> Asse Astrofisico / Frequenze Planetarie</div>
-                    <h3>Trattato Armonia Precezionale del Sistema Solare</h3>
+                    <h3>Trattato Armonia Precessionale del Sistema Solare</h3>
                     <p>Studio acustico-matematico sulle risonanze orbitali scalate in frequenze udibili. Indagine sull'influenza del Grande Anno Platonico (25.920 anni) e del respiro magnetico solare (ciclo undecennale) applicati come modello di armonizzazione per la macchina biologica.</p>
-                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato in PDF</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato e il Sintetizzatore Armonico</p>
                 </div>
                 <div class="card" onclick="openAnomaliesMap()" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
@@ -666,14 +792,14 @@
                         </td>
                         <td><span class="badge progressing">In Rilievo</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="window.open('documenti/TRATTATO%20ARMONIA%20PRECEZIONALE%20DEL%20SISTEMA%20SOLARE.pdf', '_blank')">
+                    <tr class="clickable-row" onclick="showSection('precessionale-detail')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">PRC-25K 🔗</td>
-                        <td style="color: var(--accent-color); font-weight: bold;">Trattato Armonia Precezionale ➔</td>
+                        <td style="color: var(--accent-color); font-weight: bold;">Trattato Armonia Precessionale ➔</td>
                         <td>Asse Astrofisico</td>
                         <td>
-                            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 85%;"></div></div> 85%
+                            <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 100%;"></div></div> 100%
                         </td>
-                        <td><span class="badge progressing">Sintesi Audio</span></td>
+                        <td><span class="badge active">Sintetizzatore Attivo</span></td>
                     </tr>
                     <tr class="clickable-row" onclick="showSection('mappe')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAT-03B 🔗</td>
@@ -691,7 +817,7 @@
                         <td>
                             <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 90%;"></div></div> 90%
                         </td>
-                        <td><span class="badge active">Schede & PDF</span></td>
+                        <td><span class="badge active">Schedes & PDF</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -704,11 +830,11 @@
                     <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata</p>
                 </div>
-                <div class="card" onclick="window.open('documenti/TRATTATO%20ARMONIA%20PRECEZIONALE%20DEL%20SISTEMA%20SOLARE.pdf', '_blank')" style="cursor: pointer;">
+                <div class="card" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🪐</span> Protocollo Operativo PRC-25K</div>
-                    <h3>Armonia Precezionale del Sistema Solare</h3>
-                    <p>Elaborazione e sintesi informatica (su base Python) delle orbite del sistema solare e cicli precezionali.</p>
-                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato PDF</p>
+                    <h3>Armonia Precessionale del Sistema Solare</h3>
+                    <p>Elaborazione teorica e modulazione in tempo reale delle frequenze orbitali del sistema solare.</p>
+                    <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato e il Sintetizzatore</p>
                 </div>
                 <div class="card" onclick="showSection('mappe')" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Protocollo Operativo MAT-03B</div>
@@ -723,6 +849,72 @@
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire le tavole e scaricare i PDF</p>
                 </div>
             </div>
+        </div>
+
+        <!-- SCHEDA DI APPROFONDIMENTO PRC-25K (TRATTATO ARMONIA PRECESSIONALE & SINTETIZZATORE) -->
+        <div id="section-precessionale-detail" class="page-section">
+            <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
+            
+            <div class="hero">
+                <h1>Armonia Precessionale Cosmica</h1>
+                <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
+                <p>Protocollo Operativo PRC-25K &bull; Trattato Scientifico, Sintetizzatore Planetario e Generatore di Risonanze</p>
+            </div>
+
+            <!-- SCHEDA 1: DOWNLOAD TRATTATO PDF -->
+            <div class="card" style="margin-top: 30px; border-color: var(--accent-color);">
+                <div class="card-meta"><span>📄</span> Documento Ufficiale - PRC-25K</div>
+                <h3>Trattato Armonia Precessionale del Sistema Solare (PDF)</h3>
+                <p style="margin-bottom: 20px;">Consulta o scarica il trattato teorico completo sull'armonia delle orbite, il Grande Anno Platonico ed i cicli di risonanza cosmica.</p>
+                
+                <div style="display: flex; flex-direction: row; gap: 15px; flex-wrap: wrap;">
+                    <a href="documenti/TRATTATO%20ARMONIA%20PRECEZIONALE%20DEL%20SISTEMA%20SOLARE.pdf" target="_blank" class="btn-action">
+                        📖 Apri PDF in una Nuova Scheda
+                    </a>
+                    <a href="documenti/TRATTATO%20ARMONIA%20PRECEZIONALE%20DEL%20SISTEMA%20SOLARE.pdf" download class="btn-action" style="background-color: var(--border-color); color: #fff;">
+                        📥 Scarica Documento PDF
+                    </a>
+                </div>
+            </div>
+
+            <!-- SCHEDA 2: EQUALIZZATORE / SINTETIZZATORE ARMONICO -->
+            <div class="card">
+                <div class="card-meta"><span>🎛️</span> Generatore Frequenziale Interattivo</div>
+                <h3>Sintetizzatore Armonico del Sistema Solare</h3>
+                <p style="margin-bottom: 20px;">Sperimenta direttamente le risonanze planetarie scalate in frequenza audio. Seleziona il sistema di intonazione desiderato e miscela le frequenze dei singoli corpi celesti.</p>
+
+                <div class="synth-controls-global">
+                    <button id="btn-play" class="btn-synth-play">AVVIA AUDIO</button>
+
+                    <div class="synth-control-group">
+                        <label for="scale-select">Sistema di Intonazione / Scala</label>
+                        <select id="scale-select">
+                            <option value="cousto">Ottava Cosmica di Cousto (Frequenze Reali)</option>
+                            <option value="432hz">Scala Aurea Pitagorica (A4 = 432 Hz)</option>
+                            <option value="solfeggio">Frequenze Solfeggio Sacro</option>
+                            <option value="equal">Temperamento Equabile (A4 = 440 Hz)</option>
+                        </select>
+                    </div>
+
+                    <div class="synth-control-group">
+                        <label for="master-volume">Volume Generale</label>
+                        <input type="range" id="master-volume" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+
+                    <div class="synth-control-group">
+                        <label for="orbit-mod">Modulazione Orbitale (Respiro AM)</label>
+                        <select id="orbit-mod">
+                            <option value="on">Attiva</option>
+                            <option value="off">Disattiva</option>
+                        </select>
+                    </div>
+                </div>
+
+                <canvas id="visualizer"></canvas>
+
+                <div class="planets-grid" id="planets-container"></div>
+            </div>
+
         </div>
 
         <!-- SCHEDA DI APPROFONDIMENTO BENTOV -->
@@ -996,7 +1188,7 @@
                             <label for="ambito">Sezione / Ambito del Contributo</label>
                             <select id="ambito" name="Sezione_Destinazione" class="form-control">
                                 <option value="Onde Bentov / Asse Frequenziale">TOR-01A - Mappatura Onde Bentov</option>
-                                <option value="Armonia Precezionale / Asse Astrofisico">PRC-25K - Trattato Armonia Precezionale</option>
+                                <option value="Armonia Precessionale / Asse Astrofisico">PRC-25K - Trattato Armonia Precessionale</option>
                                 <option value="Triangolazione Nodi / Asse Matrice">MAT-03B - Triangolazione Nodi Terreno</option>
                                 <option value="Meccanica Ottave / Asse Meccanico">GUR-07M - Meccanica delle Ottave</option>
                                 <option value="Altro / Generale">Altra Segnalazione Generica</option>
@@ -1040,6 +1232,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
+        // GESTIONE NAVIGAZIONE
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active-section');
@@ -1070,6 +1263,12 @@
                     initMagnifier("bentov-img-3", "magnifier-glass-3", 2.5);
                     initMagnifier("bentov-img-4", "magnifier-glass-4", 2.5);
                 }, 100);
+            } else if (sectionId === 'precessionale-detail') {
+                document.getElementById('section-precessionale-detail').classList.add('active-section');
+                document.getElementById('nav-ricerca').classList.add('active');
+                if (planetsContainer.children.length === 0) {
+                    renderPlanetCards();
+                }
             } else if (sectionId === 'gur-detail') {
                 document.getElementById('section-gur-detail').classList.add('active-section');
                 document.getElementById('nav-ricerca').classList.add('active');
@@ -1095,6 +1294,7 @@
             loadKmlViewer('Anomalie e Nodi Energetici Geomorfologici', 'kml/Anomalie%20e%20Nodi%20Energetici%20Geomorfologici.kml');
         }
 
+        /* GESTIONE MAPPE LEAFLET KML */
         let mapInstance = null;
 
         function loadKmlViewer(title, kmlUrl) {
@@ -1134,6 +1334,222 @@
             document.getElementById('viewer-container').style.display = 'none';
         }
 
+        /* GESTIONE SINTETIZZATORE E EQUALIZZATORE ARMONICO */
+        const planetData = [
+            { name: "Sole", color: "#f59e0b", period: 100, cousto: 126.22, p432: 128.00, solfeggio: 174.00, equal: 130.81 },
+            { name: "Mercurio", color: "#9ca3af", period: 0.24, cousto: 141.27, p432: 144.00, solfeggio: 285.00, equal: 146.83 },
+            { name: "Venere", color: "#f43f5e", period: 0.62, cousto: 221.23, p432: 216.00, solfeggio: 396.00, equal: 220.00 },
+            { name: "Terra", color: "#3b82f6", period: 1.00, cousto: 194.18, p432: 192.00, solfeggio: 417.00, equal: 196.00 },
+            { name: "Marte", color: "#ef4444", period: 1.88, cousto: 144.72, p432: 144.00, solfeggio: 528.00, equal: 146.83 },
+            { name: "Giove", color: "#fb923c", period: 11.86, cousto: 183.58, p432: 180.00, solfeggio: 639.00, equal: 185.00 },
+            { name: "Saturno", color: "#eab308", period: 29.46, cousto: 147.85, p432: 144.00, solfeggio: 741.00, equal: 146.83 },
+            { name: "Urano", color: "#06b6d4", period: 84.01, cousto: 207.36, p432: 208.00, solfeggio: 852.00, equal: 207.65 },
+            { name: "Nettuno", color: "#6366f1", period: 164.79, cousto: 211.44, p432: 216.00, solfeggio: 963.00, equal: 220.00 },
+            { name: "Plutone", color: "#8b5cf6", period: 248.09, cousto: 140.25, p432: 135.00, solfeggio: 432.00, equal: 138.59 }
+        ];
+
+        let audioCtx = null;
+        let masterGain = null;
+        let analyser = null;
+        let isPlaying = false;
+        let activeScale = 'cousto';
+        let enableAM = true;
+        const synthNodes = [];
+
+        const btnPlay = document.getElementById('btn-play');
+        const scaleSelect = document.getElementById('scale-select');
+        const masterVolumeInput = document.getElementById('master-volume');
+        const orbitModSelect = document.getElementById('orbit-mod');
+        const planetsContainer = document.getElementById('planets-container');
+        const canvas = document.getElementById('visualizer');
+        const canvasCtx = canvas.getContext('2d');
+
+        function initAudio() {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            masterGain = audioCtx.createGain();
+            masterGain.gain.value = parseFloat(masterVolumeInput.value);
+
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 2048;
+
+            masterGain.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            planetData.forEach((planet, index) => {
+                const carrier = audioCtx.createOscillator();
+                carrier.type = 'sine';
+                carrier.frequency.value = planet[activeScale];
+
+                const modulator = audioCtx.createOscillator();
+                modulator.type = 'sine';
+                const modFreq = 0.05 / Math.sqrt(planet.period); 
+                modulator.frequency.value = modFreq;
+
+                const modGain = audioCtx.createGain();
+                modGain.gain.value = enableAM ? 0.4 : 0.0;
+
+                const planetGain = audioCtx.createGain();
+                planetGain.gain.value = 0;
+
+                modulator.connect(modGain);
+                carrier.connect(planetGain);
+                modGain.connect(planetGain.gain);
+                planetGain.connect(masterGain);
+
+                carrier.start();
+                modulator.start();
+
+                synthNodes.push({
+                    carrier: carrier,
+                    modulator: modulator,
+                    modGain: modGain,
+                    planetGain: planetGain,
+                    data: planet
+                });
+            });
+
+            drawVisualizer();
+        }
+
+        function renderPlanetCards() {
+            planetsContainer.innerHTML = '';
+            planetData.forEach((planet, index) => {
+                const card = document.createElement('div');
+                card.className = 'planet-card';
+                card.style.borderLeftColor = planet.color;
+
+                const freq = planet[activeScale];
+
+                card.innerHTML = `
+                    <div class="planet-header">
+                        <span class="planet-name" style="color:${planet.color}">${planet.name}</span>
+                        <span class="planet-freq" id="freq-${index}">${freq.toFixed(2)} Hz</span>
+                    </div>
+                    <div class="slider-container">
+                        <label style="margin:0;">Vol</label>
+                        <input type="range" id="vol-${index}" min="0" max="1" step="0.01" value="0">
+                        <span class="val-display" id="val-${index}">0%</span>
+                    </div>
+                `;
+
+                planetsContainer.appendChild(card);
+
+                const slider = card.querySelector(`#vol-${index}`);
+                const display = card.querySelector(`#val-${index}`);
+
+                slider.addEventListener('input', (e) => {
+                    const val = parseFloat(e.target.value);
+                    display.textContent = Math.round(val * 100) + '%';
+                    if (synthNodes[index]) {
+                        synthNodes[index].planetGain.gain.setTargetAtTime(val, audioCtx.currentTime, 0.05);
+                    }
+                });
+            });
+        }
+
+        function updateFrequencies() {
+            synthNodes.forEach((node, index) => {
+                const newFreq = node.data[activeScale];
+                node.carrier.frequency.setTargetAtTime(newFreq, audioCtx.currentTime, 0.1);
+                const freqDisplay = document.getElementById(`freq-${index}`);
+                if (freqDisplay) {
+                    freqDisplay.textContent = newFreq.toFixed(2) + ' Hz';
+                }
+            });
+        }
+
+        function updateAMState() {
+            synthNodes.forEach(node => {
+                if (enableAM) {
+                    node.modGain.gain.setTargetAtTime(0.4, audioCtx.currentTime, 0.1);
+                } else {
+                    node.modGain.gain.setTargetAtTime(0.0, audioCtx.currentTime, 0.1);
+                }
+            });
+        }
+
+        btnPlay.addEventListener('click', () => {
+            if (!audioCtx) {
+                initAudio();
+            }
+
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (!isPlaying) {
+                isPlaying = true;
+                btnPlay.textContent = "FERMA AUDIO";
+                btnPlay.classList.add('stop');
+            } else {
+                isPlaying = false;
+                btnPlay.textContent = "AVVIA AUDIO";
+                btnPlay.classList.remove('stop');
+                masterGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.1);
+                return;
+            }
+            masterGain.gain.setTargetAtTime(parseFloat(masterVolumeInput.value), audioCtx.currentTime, 0.1);
+        });
+
+        scaleSelect.addEventListener('change', (e) => {
+            activeScale = e.target.value;
+            if (synthNodes.length > 0) {
+                updateFrequencies();
+            } else {
+                renderPlanetCards();
+            }
+        });
+
+        masterVolumeInput.addEventListener('input', (e) => {
+            if (masterGain && isPlaying) {
+                masterGain.gain.setTargetAtTime(parseFloat(e.target.value), audioCtx.currentTime, 0.05);
+            }
+        });
+
+        orbitModSelect.addEventListener('change', (e) => {
+            enableAM = e.target.value === 'on';
+            if (synthNodes.length > 0) {
+                updateAMState();
+            }
+        });
+
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
+
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            analyser.getByteTimeDomainData(dataArray);
+
+            canvasCtx.fillStyle = '#06090e';
+            canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+            canvasCtx.lineWidth = 2;
+            canvasCtx.strokeStyle = '#58a6ff';
+            canvasCtx.beginPath();
+
+            const sliceWidth = canvas.width * 1.0 / bufferLength;
+            let x = 0;
+
+            for (let i = 0; i < bufferLength; i++) {
+                const v = dataArray[i] / 128.0;
+                const y = v * canvas.height / 2;
+
+                if (i === 0) {
+                    canvasCtx.moveTo(x, y);
+                } else {
+                    canvasCtx.lineTo(x, y);
+                }
+
+                x += sliceWidth;
+            }
+
+            canvasCtx.lineTo(canvas.width, canvas.height / 2);
+            canvasCtx.stroke();
+        }
+
+        renderPlanetCards();
+
+        /* GESTIONE FORM ALLEGATI MULTIPLI */
         let dt = new DataTransfer();
         const fileInput = document.getElementById('attachment');
         const dropArea = document.getElementById('drop-area');
@@ -1199,6 +1615,7 @@
             fileInput.files = dt.files;
         });
 
+        /* LENTE DI INGRANDIMENTO */
         function initMagnifier(imgID, glassID, zoom) {
             const img = document.getElementById(imgID);
             const glass = document.getElementById(glassID);
@@ -1253,6 +1670,7 @@
             }
         }
 
+        /* MODALE SCHERMO INTERO */
         function openModal(src) {
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("imgModalTarget");
