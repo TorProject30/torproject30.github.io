@@ -39,7 +39,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative; /* Fondamentale per ancorare il contatore */
+            position: relative;
         }
 
         /* CONTATORE VISITE REALI: POSIZIONATO E CENTRATO VERTICALMENTE CON LA SCRITTA/LOGO A SX */
@@ -1402,18 +1402,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
-        // GESTIONE CONTEGGIO VISITE AFFIDABILE (LOCALE E PERSISTENTE)
+        // GESTIONE CONTEGGIO VISITE (INCREMENTA AD OGNI AGGIORNAMENTO PAGINA)
         function initVisitsCounter() {
             const container = document.getElementById('counter-digits');
             if (!container) return;
 
             let visits = parseInt(localStorage.getItem('torus_total_visits') || '1240', 10);
             
-            if (!sessionStorage.getItem('torus_session_counted')) {
-                visits += 1;
-                localStorage.setItem('torus_total_visits', visits);
-                sessionStorage.setItem('torus_session_counted', 'true');
-            }
+            // Incrementa ad ogni caricamento/aggiornamento
+            visits += 1;
+            localStorage.setItem('torus_total_visits', visits);
 
             const countStr = String(visits).padStart(6, '0');
             container.innerHTML = '';
