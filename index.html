@@ -1398,7 +1398,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
-        // FUNZIONI UTILI PER I COOKIE
+        // GESTIONE UTILI PER I COOKIE
         function setCookie(name, value, hours) {
             let expires = "";
             if (hours) {
@@ -1427,24 +1427,36 @@
 
             const namespace = "torusproject_site_uff";
             const key = "visite_totali";
-            let visits = 3; // Valore minimo di partenza
+            let visits = 3;
 
             try {
                 if (!getCookie('torus_counted')) {
-                    // Prima visita per questo browser nelle ultime 24h: incrementa sul server cloud
                     let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
-                    let data = await response.json();
-                    visits = data.count;
-                    setCookie('torus_counted', 'true', 24);
+                    if (response.ok) {
+                        let data = await response.json();
+                        visits = data.count;
+                        setCookie('torus_counted', 'true', 24);
+                    } else {
+                        let resGet = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
+                        if (resGet.ok) {
+                            let dataGet = await resGet.json();
+                            visits = dataGet.count;
+                        }
+                    }
                 } else {
-                    // Visita già contata di recente: legge solo il valore attuale senza incrementare
                     let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
-                    let data = await response.json();
-                    visits = data.count;
+                    if (response.ok) {
+                        let data = await response.json();
+                        visits = data.count;
+                    }
                 }
             } catch (error) {
-                // Fallback di sicurezza se manca internet
                 visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10);
+                if (!getCookie('torus_counted')) {
+                    visits += 1;
+                    localStorage.setItem('torus_visits_fallback', visits);
+                    setCookie('torus_counted', 'true', 24);
+                }
             }
 
             const countStr = String(visits).padStart(6, '0');
