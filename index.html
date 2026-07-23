@@ -825,7 +825,7 @@
 <body>
 
     <header>
-        <!-- CONTATORE VISITE REALI: POSIZIONATO E CENTRATO VERTICALMENTE CON LA SCRITTA A SX -->
+        <!-- CONTATORE VISITE REALI: PARTENZA DA 0 E INCREMENTALE -->
         <div class="header-counter-position">
             <div class="visite-totali-box">
                 <div class="visite-totali-header">Visite:</div>
@@ -1402,16 +1402,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
 
     <script>
-        // GESTIONE CONTEGGIO VISITE (PARTENZA DA 0)
+        // GESTIONE CONTEGGIO VISITE (PARTENZA DA 0 E INCREMENTALE)
         function initVisitsCounter() {
             const container = document.getElementById('counter-digits');
             if (!container) return;
 
-            let visits = parseInt(localStorage.getItem('torus_total_visits') || '0', 10);
+            // Utilizziamo una nuova chiave nel localStorage per azzerare il vecchio contatore e partire da 0
+            let visits = parseInt(localStorage.getItem('torus_visits_fresh') || '0', 10);
             
-            // Incrementa ad ogni caricamento/aggiornamento
             visits += 1;
-            localStorage.setItem('torus_total_visits', visits);
+            localStorage.setItem('torus_visits_fresh', visits);
 
             const countStr = String(visits).padStart(6, '0');
             container.innerHTML = '';
