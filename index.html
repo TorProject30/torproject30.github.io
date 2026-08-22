@@ -907,7 +907,7 @@
             </div>
         </div>
 
-        <!-- SEZIONE LINEE DI RICERCA -->
+        <!-- SEZIONE LINEE DI Ricerca -->
         <div id="section-ricerca" class="page-section">
             <div class="hero">
                 <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
@@ -1425,7 +1425,7 @@
 
             const namespace = "torusproject_site_uff";
             const key = "visite_totali";
-            let visits = 3;
+            let visits;
 
             try {
                 let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
@@ -1433,13 +1433,11 @@
                     let data = await response.json();
                     visits = data.count;
                 } else {
-                    let resGet = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`);
-                    if (resGet.ok) {
-                        let dataGet = await resGet.json();
-                        visits = dataGet.count;
-                    }
+                    // Se l'API cloud risponde con un errore (es. down o rate limit), forza il catch
+                    throw new Error("API non disponibile");
                 }
             } catch (error) {
+                // Fallback locale di sicurezza
                 visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10) + 1;
                 localStorage.setItem('torus_visits_fallback', visits);
             }
