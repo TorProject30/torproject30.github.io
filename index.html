@@ -160,6 +160,34 @@
             color: var(--accent-color);
         }
 
+        /* BARRA DI RICERCA GLOBALE INTEGRATA */
+        .search-container {
+            margin-top: 18px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-input {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.25);
+            text-align: left;
+        }
+
         .page-section {
             display: none;
             position: relative;
@@ -865,12 +893,17 @@
             <a id="nav-mappe" onclick="showSection('mappe')">🌐 Mappe Earth</a>
             <a id="nav-contatti" onclick="showSection('contatti')">✉ Contatti</a>
         </nav>
+
+        <!-- BARRA DI RICERCA GLOBALE INTEGRATA -->
+        <div class="search-container">
+            <input type="text" id="global-search" class="search-input" placeholder="🔍 Cerca nei contenuti o schede..." onkeyup="filterSiteContent()">
+        </div>
     </header>
 
     <div class="container">
         
         <!-- SEZIONE HOME -->
-        <div id="section-home" class="page-section active-section">
+        <div id="section-home" class="page-section active-section searchable-section">
             <div class="hero">
                 <h1>Studio della Dinamica e della Meccanica della Coscienza</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
@@ -880,25 +913,25 @@
 
             <h2 class="section-title">Assi Principali di Indagine</h2>
             <div class="grid">
-                <div class="card" onclick="showSection('bentov-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('bentov-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🌀</span> Asse Frequenziale / Modello Toro</div>
                     <h3>Dinamiche di Risonanza e Campi Orgonici</h3>
                     <p>Studio dei vettori energetici e dei flussi d'onda che governano l'interazione tra spazio geografico e biologia. Integrazione applicata delle intuizioni meccaniche di Wilhelm Reich ed Itzhak Bentov sull'universo vibratorio autosostenuto.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la Mappatura Onde Bentov</p>
                 </div>
-                <div class="card" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🪐</span> Asse Astrofisico / Frequenze Planetarie</div>
                     <h3>Trattato Armonia Precessionale del Sistema Solare</h3>
                     <p>Studio acustico-matematico sulle risonanze orbitali scalate in frequenze udibili. Indagine sull'influenza del Grande Anno Platonico (25.920 anni) e del respiro magnetico solare (ciclo undecennale) applicati come modello di armonizzazione per la macchina biologica.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato e il Sintetizzatore Armonico</p>
                 </div>
-                <div class="card" onclick="openAnomaliesMap()" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="openAnomaliesMap()" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Asse Matrice / Geometria Territoriale</div>
                     <h3>Sistemi di Coordinate e Punti di Interesse</h3>
                     <p>Mappatura matematica e tracciamento geometrico delle anomalie del terreno. Strutturazione di un database cartografico centralizzato per l'osservazione tridimensionale e la triangolazione dei nodi di flusso planetari.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire Anomalie e Nodi Energetici</p>
                 </div>
-                <div class="card" onclick="showSection('gur-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('gur-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>⚙️</span> Asse Meccanico / Ottava Universale</div>
                     <h3>Leggi del Risveglio e Osservazione Oggettiva</h3>
                     <p>Studio rigoroso della macchina umana e delle leggi cosmiche (Legge del Tre e del Sette) basato sull'approccio del "Lavoro". Analisi dei processi di transizione energetica e della meccanica delle ottave.</p>
@@ -908,7 +941,7 @@
         </div>
 
         <!-- SEZIONE LINEE DI Ricerca -->
-        <div id="section-ricerca" class="page-section">
+        <div id="section-ricerca" class="page-section searchable-section">
             <div class="hero">
                 <h1>Programmi di Sviluppo e Protocolli Tecnici</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
@@ -916,7 +949,7 @@
             </div>
 
             <h2 class="section-title">Matrice dello Stato Ricerche</h2>
-            <table class="research-table">
+            <table class="research-table searchable-table">
                 <thead>
                     <tr>
                         <th>Codice Sigla</th>
@@ -927,7 +960,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable-row" onclick="showSection('bentov-detail')">
+                    <tr class="clickable-row searchable-row" onclick="showSection('bentov-detail')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">TOR-01A 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Mappatura Onde Bentov ➔</td>
                         <td>Asse Frequenziale</td>
@@ -936,7 +969,7 @@
                         </td>
                         <td><span class="badge progressing">In Rilievo</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="showSection('precessionale-detail')">
+                    <tr class="clickable-row searchable-row" onclick="showSection('precessionale-detail')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">PRC-25K 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Trattato Armonia Precessionale ➔</td>
                         <td>Asse Astrofisico</td>
@@ -945,7 +978,7 @@
                         </td>
                         <td><span class="badge active">Sintetizzatore Attivo</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="showSection('mappe')">
+                    <tr class="clickable-row searchable-row" onclick="showSection('mappe')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAT-03B 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Triangolazione Nodi Terreno ➔</td>
                         <td>Asse Matrice</td>
@@ -954,7 +987,7 @@
                         </td>
                         <td><span class="badge progressing">Seleziona Mappa</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="showSection('gur-detail')">
+                    <tr class="clickable-row searchable-row" onclick="showSection('gur-detail')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">GUR-07M 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Meccanica delle Ottave ➔</td>
                         <td>Asse Meccanico</td>
@@ -968,25 +1001,25 @@
 
             <h2 class="section-title">Approfondimento dei Protocolli</h2>
             <div class="grid">
-                <div class="card" onclick="showSection('bentov-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('bentov-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🌀</span> Protocollo Strumentale TOR-01A</div>
                     <h3>Mappatura Onde Bentov</h3>
                     <p>Verifica empirica dell'ipotesi del micro-moto cardiaco come sincronizzatore dei ritmi cerebrali ed ecologici.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire la scheda dedicata</p>
                 </div>
-                <div class="card" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('precessionale-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>🪐</span> Protocollo Operativo PRC-25K</div>
                     <h3>Armonia Precessionale del Sistema Solare</h3>
                     <p>Elaborazione teorica e modulazione in tempo reale delle frequenze orbitali del sistema solare.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire il Trattato e il Sintetizzatore</p>
                 </div>
-                <div class="card" onclick="showSection('mappe')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('mappe')" style="cursor: pointer;">
                     <div class="card-meta"><span>📐</span> Protocollo Operativo MAT-03B</div>
                     <h3>Triangolazione Nodi Terreno</h3>
                     <p>Mappatura e analisi geometrica delle anomalie energetiche rilevate sul campo.</p>
                     <p style="margin-top: 15px; color: var(--accent-color); font-weight: bold; font-size: 13px;">➔ Clicca per aprire l'archivio Mappe Earth</p>
                 </div>
-                <div class="card" onclick="showSection('gur-detail')" style="cursor: pointer;">
+                <div class="card searchable-item" onclick="showSection('gur-detail')" style="cursor: pointer;">
                     <div class="card-meta"><span>⚙️</span> Protocollo Operativo GUR-07M</div>
                     <h3>Meccanica delle Ottave e Isolamento Biologico</h3>
                     <p>Sviluppo di processi analitici sulle ottave cosmiche, idrogeni e nutrizione della macchina biologica.</p>
@@ -996,7 +1029,7 @@
         </div>
 
         <!-- SCHEDA DI APPROFONDIMENTO PRC-25K -->
-        <div id="section-precessionale-detail" class="page-section">
+        <div id="section-precessionale-detail" class="page-section searchable-section">
             <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
             
             <div class="hero">
@@ -1005,7 +1038,7 @@
                 <p>Protocollo Operativo PRC-25K &bull; Trattato Scientifico, Sintetizzatore Planetario e Generatore di Risonanze</p>
             </div>
 
-            <div class="card" style="margin-top: 30px; border-color: var(--accent-color);">
+            <div class="card searchable-item" style="margin-top: 30px; border-color: var(--accent-color);">
                 <div class="card-meta"><span>📄</span> Documento Ufficiale - PRC-25K</div>
                 <h3>Trattato Armonia Precessionale del Sistema Solare (PDF)</h3>
                 <p style="margin-bottom: 20px;">Consulta o scarica il trattato teorico completo sull'armonia delle orbite, il Grande Anno Platonico ed i cicli di risonanza cosmica.</p>
@@ -1020,7 +1053,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>🎛️</span> Generatore Frequenziale Interattivo</div>
                 <h3>Sintetizzatore Armonico del Sistema Solare</h3>
                 <p style="margin-bottom: 20px;">Sperimenta direttamente le risonanze planetarie scalate in frequenza audio. Seleziona il sistema di intonazione desiderato e miscela le frequenze dei singoli corpi celesti.</p>
@@ -1064,7 +1097,7 @@
         </div>
 
         <!-- SCHEDA DI APPROFONDIMENTO BENTOV -->
-        <div id="section-bentov-detail" class="page-section">
+        <div id="section-bentov-detail" class="page-section searchable-section">
             <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
             
             <div class="hero">
@@ -1073,7 +1106,7 @@
                 <p>Protocollo Strumentale TOR-01A &bull; Analisi dei Ritmi di Risonanza Fisiologica e Universo Toroidale</p>
             </div>
 
-            <div class="card" style="margin-top: 30px;">
+            <div class="card searchable-item" style="margin-top: 30px;">
                 <div class="card-meta"><span>🌀</span> Schema 1 - Oscillazioni Biologiche</div>
                 <h3>Diagramma delle Oscillazioni e Micro-Moto Cardiaco</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1085,7 +1118,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>🌐</span> Schema 2 - Modello Cosmologico</div>
                 <h3>Universo Toroidale Bentov</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1097,7 +1130,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>📐</span> Schema 3 - Modello Vibrazionale</div>
                 <h3>Schema Coscienza Assoluto</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1109,7 +1142,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>📊</span> Schema 4 - Analisi Parametrica</div>
                 <h3>Poster Quantità e Qualità di Coscienza</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1128,7 +1161,7 @@
         </div>
 
         <!-- SCHEDA DI APPROFONDIMENTO GUR-07M -->
-        <div id="section-gur-detail" class="page-section">
+        <div id="section-gur-detail" class="page-section searchable-section">
             <button class="btn-back" onclick="showSection('ricerca')">⬅ Torna alle Linee di Ricerca</button>
             
             <div class="hero">
@@ -1137,7 +1170,7 @@
                 <p>Protocollo Operativo GUR-07M &bull; Tavole Analitiche, Scala degli Idrogeni e Raggio di Creazione</p>
             </div>
 
-            <div class="card" style="margin-top: 30px;">
+            <div class="card searchable-item" style="margin-top: 30px;">
                 <div class="card-meta"><span>⚙️</span> Tavola 01</div>
                 <h3>Legge dell'Ottava</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1148,7 +1181,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 02</div>
                 <h3>Ottava come Alimento</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1159,7 +1192,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 03</div>
                 <h3>Scala Evoluzione Idrogeni</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1170,7 +1203,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 04</div>
                 <h3>Scala degli Idrogeni</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1181,7 +1214,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 05</div>
                 <h3>Nutrimento Ottava</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1192,7 +1225,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 06</div>
                 <h3>Poster Tabella degli Idrogeni</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1203,7 +1236,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 07</div>
                 <h3>Raggio di Creazione</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1214,7 +1247,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 08</div>
                 <h3>Atomo Linea Evoluzione</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1225,7 +1258,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card">
+            <div class="card searchable-item">
                 <div class="card-meta"><span>⚙️</span> Tavola 09</div>
                 <h3>Poster Raggio di Creazione</h3>
                 <p>Passa il mouse per ingrandire con la lente, oppure clicca per aprire a schermo intero.</p>
@@ -1236,7 +1269,7 @@
                 <div class="image-hint">🔍 Muovi il cursore per esplorare i dettagli &bull; Clicca per Fullscreen</div>
             </div>
 
-            <div class="card" style="border-color: var(--accent-color); margin-top: 50px;">
+            <div class="card searchable-item" style="border-color: var(--accent-color); margin-top: 50px;">
                 <div class="card-meta"><span>📥</span> Archivio Documentazione</div>
                 <h3>Download Documenti PDF - GUR-07M</h3>
                 <p style="margin-bottom: 20px;">Scarica il documento di approfondimento in formato PDF direttamente sul tuo dispositivo.</p>
@@ -1255,7 +1288,7 @@
         </div>
 
         <!-- SEZIONE MAPPE EARTH -->
-        <div id="section-mappe" class="page-section">
+        <div id="section-mappe" class="page-section searchable-section">
             <div class="hero">
                 <h1>Mappe Earth &bull; Archivio KML Territoriale</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
@@ -1266,7 +1299,7 @@
             <h2 class="section-title">Elenco Ricerche Territoriali (Database KML)</h2>
             <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Clicca su una ricerca nella tabella per visionare direttamente il file KML nella mappa interattiva sottostante o scaricarlo.</p>
             
-            <table class="research-table">
+            <table class="research-table searchable-table">
                 <thead>
                     <tr>
                         <th>Codice Mappa</th>
@@ -1276,19 +1309,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="clickable-row" onclick="loadKmlViewer('Linea di San Michele', 'kml/Linea%20di%20San%20Michele.kml')">
+                    <tr class="clickable-row searchable-row" onclick="loadKmlViewer('Linea di San Michele', 'kml/Linea%20di%20San%20Michele.kml')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAP-01 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Linea di San Michele (Allineamento) ➔</td>
                         <td>Territorio Globale</td>
                         <td><span class="badge active">Visualizza & Scarica</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="loadKmlViewer('Anomalie e Nodi Energetici Geomorfologici', 'kml/Anomalie%20e%20Nodi%20Energetici%20Geomorfologici.kml')">
+                    <tr class="clickable-row searchable-row" onclick="loadKmlViewer('Anomalie e Nodi Energetici Geomorfologici', 'kml/Anomalie%20e%20Nodi%20Energetici%20Geomorfologici.kml')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAP-02 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Anomalie e Nodi Energetici Geomorfologici ➔</td>
                         <td>Territorio / Analisi</td>
                         <td><span class="badge active">Visualizza & Scarica</span></td>
                     </tr>
-                    <tr class="clickable-row" onclick="loadKmlViewer('Città del Mondo Nuovo', 'kml/Citta%27%20del%20Mondo%20Nuovo.kml')">
+                    <tr class="clickable-row searchable-row" onclick="loadKmlViewer('Città del Mondo Nuovo', 'kml/Citta%27%20del%20Mondo%20Nuovo.kml')">
                         <td style="font-family: monospace; font-weight: bold; color: var(--accent-color);">MAP-03 🔗</td>
                         <td style="color: var(--accent-color); font-weight: bold;">Città del Mondo Nuovo ➔</td>
                         <td>Territorio / Ricerca</td>
@@ -1337,7 +1370,7 @@
         </div>
 
         <!-- SEZIONE CONTATTI -->
-        <div id="section-contatti" class="page-section">
+        <div id="section-contatti" class="page-section searchable-section">
             <div class="hero">
                 <h1>Canali di Interazione e Inoltro Dati</h1>
                 <div class="symbol-separator">⊙ ─── ⊗ ─── ⊙</div>
@@ -1409,7 +1442,7 @@
     </div>
 
     <footer>
-        <div class="footer-symbols">🜁 🜂 🜃 🜄</div>
+        <div class="footer-symbols">🜁 2 🜃 🜄</div>
         <p>&copy; 2026 TorusProject &bull; Studio e Divulgazione Scientifica Indipendente.</p>
     </footer>
 
@@ -1433,11 +1466,9 @@
                     let data = await response.json();
                     visits = data.count;
                 } else {
-                    // Se l'API cloud risponde con un errore (es. down o rate limit), forza il catch
                     throw new Error("API non disponibile");
                 }
             } catch (error) {
-                // Fallback locale di sicurezza
                 visits = parseInt(localStorage.getItem('torus_visits_fallback') || '3', 10) + 1;
                 localStorage.setItem('torus_visits_fallback', visits);
             }
@@ -1453,6 +1484,38 @@
         }
 
         document.addEventListener('DOMContentLoaded', initVisitsCounter);
+
+        // FUNZIONE DI RICERCA IN TEMPO REALE TRA I CONTENUTI DEL SITO
+        function filterSiteContent() {
+            const query = document.getElementById('global-search').value.toLowerCase().trim();
+            if (query === '') {
+                // Se la ricerca è vuota, ripristina la visibilità di tutti gli elementi
+                document.querySelectorAll('.searchable-item, .searchable-row').forEach(el => {
+                    el.style.display = '';
+                });
+                return;
+            }
+
+            // Filtra le card / elementi
+            document.querySelectorAll('.searchable-item').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Filtra le righe delle tabelle di ricerca
+            document.querySelectorAll('.searchable-row').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
 
         // GESTIONE NAVIGAZIONE
         function showSection(sectionId) {
